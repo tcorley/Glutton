@@ -28,15 +28,14 @@
     UIColor *orange = [UIColor colorWithRed: 0.749 green: 0.341 blue: 0 alpha: 1];
     
     // Make views for the navigation bar
-    UIImageView *img1 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"cog"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    UIImageView *img2 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"user"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    UIImageView *img1 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"user"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    UIImageView *img3 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"swipe"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    UIImageView *img2 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"swipe"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    UIImageView *img4 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"collection"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    UIImageView *img3 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"collection"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3, img4] navBarBackground:[UIColor whiteColor] views:@[[self viewWithBackground:[UIColor blueColor]], [self viewWithBackground:[UIColor redColor]], [self viewWithBackground:[UIColor orangeColor]], [self viewWithBackground:[UIColor yellowColor]]] showPageControl:NO];
+    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[[self viewWithBackground:[UIColor blueColor]], [self viewWithBackground:[UIColor redColor]], [self viewWithBackground:[UIColor orangeColor]]] showPageControl:NO];
     
     pageViewController.navigationSideItemsStyle = SLNavigationSideItemsStyleOnBounds;
     float minX = 45.0;
@@ -67,7 +66,7 @@
         }
     };
     
-    [pageViewController setCurrentIndex:2 animated:NO];
+    [pageViewController setCurrentIndex:1 animated:YES];
     
     self.nav = [[UINavigationController alloc] initWithRootViewController:pageViewController];
     [self.window setRootViewController:self.nav];
