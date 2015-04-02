@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Glutton-AFOAuth2Manager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Glutton-SLPagingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3132E304C6BD4E80ADA838D7</key>
+		<key>6C5876653AB6B7D6787035D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9277F16F39E43A887C61550</key>
+		<key>8E908B7EC8E25A7B479FAC83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAE51B5FB6534532A4CCD1AA</key>
+		<key>A64CE15CD22533902D0063D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AEFCA1BAFDE5524401341B73</key>
 		<dict>
 			<key>primary</key>
 			<true/>

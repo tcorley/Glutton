@@ -4,6 +4,7 @@ platform :ios, "8.2"
 target "Glutton" do
 
 pod "AFNetworking", "~> 2.0"
+pod "AFOAuth2Manager"
 pod "SLPagingView"
 
 end

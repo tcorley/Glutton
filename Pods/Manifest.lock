@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.2):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.2)
+    - AFNetworking/NSURLSession (= 2.5.2)
+    - AFNetworking/Reachability (= 2.5.2)
+    - AFNetworking/Security (= 2.5.2)
+    - AFNetworking/Serialization (= 2.5.2)
+    - AFNetworking/UIKit (= 2.5.2)
   - AFNetworking/NSURLConnection (2.5.2):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -20,14 +20,18 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AFOAuth2Manager (2.2.0):
+    - AFNetworking/NSURLConnection (~> 2.2)
   - SLPagingView (0.0.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - AFOAuth2Manager
   - SLPagingView
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
   SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.36.3
