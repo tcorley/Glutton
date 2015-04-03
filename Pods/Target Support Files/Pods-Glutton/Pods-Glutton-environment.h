@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_AFOAuth2Manager 2
 #define COCOAPODS_VERSION_PATCH_AFOAuth2Manager 0
 
+// OAuthConsumer
+#define COCOAPODS_POD_AVAILABLE_OAuthConsumer
+#define COCOAPODS_VERSION_MAJOR_OAuthConsumer 1
+#define COCOAPODS_VERSION_MINOR_OAuthConsumer 0
+#define COCOAPODS_VERSION_PATCH_OAuthConsumer 3
+
 // SLPagingView
 #define COCOAPODS_POD_AVAILABLE_SLPagingView
 #define COCOAPODS_VERSION_MAJOR_SLPagingView 0

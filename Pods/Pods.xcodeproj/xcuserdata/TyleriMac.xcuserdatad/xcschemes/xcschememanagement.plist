@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Glutton-OAuthConsumer-OAuthConsumer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Glutton-OAuthConsumer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Glutton-SLPagingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6C5876653AB6B7D6787035D0</key>
+		<key>2937A5414C9E1F4F0EF519DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E908B7EC8E25A7B479FAC83</key>
+		<key>4117834949E0845E9457CC7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A64CE15CD22533902D0063D6</key>
+		<key>81D2619FE4E8242E601F8067</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEFCA1BAFDE5524401341B73</key>
+		<key>D3C129923A6EA0F90D13860A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE55688AA48BD1F1D01190F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F05F08D9D9693AB66C3B950B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

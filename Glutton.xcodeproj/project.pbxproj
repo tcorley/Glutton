@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */; };
+		3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */; };
 		3E6F38841ACCD62D005739B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38831ACCD62D005739B1 /* main.m */; };
 		3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38861ACCD62D005739B1 /* AppDelegate.m */; };
 		3E6F388A1ACCD62D005739B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38891ACCD62D005739B1 /* ViewController.m */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
+		3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
+		3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
 		3E6F387E1ACCD62D005739B1 /* Glutton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glutton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6F38821ACCD62D005739B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E6F38831ACCD62D005739B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,8 +99,12 @@
 		3E6F38801ACCD62D005739B1 /* Glutton */ = {
 			isa = PBXGroup;
 			children = (
+				3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */,
+				3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */,
 				3E6F38851ACCD62D005739B1 /* AppDelegate.h */,
 				3E6F38861ACCD62D005739B1 /* AppDelegate.m */,
+				3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */,
+				3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */,
 				3E6F38A71ACD0EB0005739B1 /* APICredentials.h */,
 				3E6F38A81ACD1072005739B1 /* ExampleAPICredentials.h */,
 				3E6F38A91ACD10FC005739B1 /* YelpYapper.h */,
@@ -290,6 +300,8 @@
 				3E6F388A1ACCD62D005739B1 /* ViewController.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
+				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,
+				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
 				3E6F38841ACCD62D005739B1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

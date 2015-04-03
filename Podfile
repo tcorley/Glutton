@@ -5,6 +5,7 @@ target "Glutton" do
 
 pod "AFNetworking", "~> 2.0"
 pod "AFOAuth2Manager"
+pod "OAuthConsumer"
 pod "SLPagingView"
 
 end

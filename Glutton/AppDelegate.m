@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "SLPagingViewController.h"
 #import "UIColor+SLAddition.h"
-
+#import "YelpYapper.h"
+#import "SwipeViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [YelpYapper getBusinesses];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIColor *gray = [UIColor colorWithRed: 0.5 green: 0.5 blue: 0.5 alpha: 1];
@@ -35,7 +37,10 @@
     
     UIImageView *img3 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"collection"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[[self viewWithBackground:[UIColor blueColor]], [self viewWithBackground:[UIColor redColor]], [self viewWithBackground:[UIColor orangeColor]]] showPageControl:NO];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SwipeViewController *swipe = (SwipeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"swipe"];
+    
+    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[[self viewWithBackground:[UIColor blueColor]], swipe.view, [self viewWithBackground:[UIColor orangeColor]]] showPageControl:NO];
     
     pageViewController.navigationSideItemsStyle = SLNavigationSideItemsStyleOnBounds;
     float minX = 45.0;
@@ -82,6 +87,7 @@
     view.backgroundColor = color;
     return view;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

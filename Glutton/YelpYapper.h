@@ -10,7 +10,9 @@
 
 @interface YelpYapper : NSObject
 
++ (NSArray *)getBusinesses;
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation;
 + (NSArray *)getBusinessDetail:(NSArray *)ids;
++ (NSURLRequest *)searchRequest;
 
 @end
