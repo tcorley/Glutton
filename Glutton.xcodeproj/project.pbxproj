@@ -17,6 +17,9 @@
 		3E6F38921ACCD62D005739B1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F38901ACCD62D005739B1 /* LaunchScreen.xib */; };
 		3E6F389E1ACCD62D005739B1 /* GluttonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F389D1ACCD62D005739B1 /* GluttonTests.m */; };
 		3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */; };
+		5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1131AD09C0A005D600B /* SummaryViewController.m */; };
+		5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1161AD09CCE005D600B /* CollectionViewController.m */; };
+		5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */; };
 		C38BFD54F4564454AFCEECE5 /* libPods-Glutton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,12 @@
 		3E6F38A91ACD10FC005739B1 /* YelpYapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpYapper.h; sourceTree = "<group>"; };
 		3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpYapper.m; sourceTree = "<group>"; };
 		414B40F44CFFE832A8010A1D /* Pods-Glutton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glutton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Glutton/Pods-Glutton.debug.xcconfig"; sourceTree = "<group>"; };
+		5D0CB1121AD09C0A005D600B /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
+		5D0CB1131AD09C0A005D600B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
+		5D0CB1151AD09CCE005D600B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		5D0CB1161AD09CCE005D600B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FalseCollectionViewController.h; sourceTree = "<group>"; };
+		5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FalseCollectionViewController.m; sourceTree = "<group>"; };
 		7B594CF81E7127B5838B2783 /* Pods-Glutton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glutton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glutton/Pods-Glutton.release.xcconfig"; sourceTree = "<group>"; };
 		A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Glutton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +112,8 @@
 				3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */,
 				3E6F38851ACCD62D005739B1 /* AppDelegate.h */,
 				3E6F38861ACCD62D005739B1 /* AppDelegate.m */,
+				5D0CB1121AD09C0A005D600B /* SummaryViewController.h */,
+				5D0CB1131AD09C0A005D600B /* SummaryViewController.m */,
 				3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */,
 				3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */,
 				3E6F38A71ACD0EB0005739B1 /* APICredentials.h */,
@@ -112,6 +123,10 @@
 				3E6F38881ACCD62D005739B1 /* ViewController.h */,
 				3E6F38891ACCD62D005739B1 /* ViewController.m */,
 				3E6F388B1ACCD62D005739B1 /* Main.storyboard */,
+				5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */,
+				5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */,
+				5D0CB1151AD09CCE005D600B /* CollectionViewController.h */,
+				5D0CB1161AD09CCE005D600B /* CollectionViewController.m */,
 				3E6F388E1ACCD62D005739B1 /* Images.xcassets */,
 				3E6F38901ACCD62D005739B1 /* LaunchScreen.xib */,
 				3E6F38811ACCD62D005739B1 /* Supporting Files */,
@@ -297,12 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */,
 				3E6F388A1ACCD62D005739B1 /* ViewController.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
 				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
+				5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */,
 				3E6F38841ACCD62D005739B1 /* main.m in Sources */,
+				5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

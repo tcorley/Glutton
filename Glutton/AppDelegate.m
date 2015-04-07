@@ -11,6 +11,9 @@
 #import "UIColor+SLAddition.h"
 #import "YelpYapper.h"
 #import "SwipeViewController.h"
+#import "CollectionViewController.h"
+#import "SummaryViewController.h"
+#import "FalseCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [YelpYapper getBusinesses];
+//    [YelpYapper getBusinesses];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIColor *gray = [UIColor colorWithRed: 0.5 green: 0.5 blue: 0.5 alpha: 1];
@@ -38,9 +41,24 @@
     UIImageView *img3 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"collection"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    SummaryViewController *summary = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
+    
     SwipeViewController *swipe = (SwipeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"swipe"];
     
-    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[[self viewWithBackground:[UIColor blueColor]], swipe.view, [self viewWithBackground:[UIColor orangeColor]]] showPageControl:NO];
+//    SummaryViewController *collection = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
+    
+    FalseCollectionViewController *collection = (FalseCollectionViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"collection"];
+    
+    
+
+    
+    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[summary.view, swipe.view, collection.view] showPageControl:NO];
+    
+    [pageViewController addChildViewController:summary];
+    [pageViewController addChildViewController:swipe];
+    [pageViewController addChildViewController:collection];
+
     
     pageViewController.navigationSideItemsStyle = SLNavigationSideItemsStyleOnBounds;
     float minX = 45.0;

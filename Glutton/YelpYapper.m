@@ -20,12 +20,12 @@ static NSString * const kBusinessPath      = @"/v2/business/";
 @implementation YelpYapper
 
 + (NSArray *)getBusinesses {
-    NSLog(@"Should be getting called");
+//    NSLog(@"Should be getting called");
     return [self getBusinesses:0.0];
 }
 
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation {
-    NSLog(@"In the other business method");
+//    NSLog(@"In the other business method");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [[manager HTTPRequestOperationWithRequest:[self searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",[responseObject objectForKey:@"businesses"]);
