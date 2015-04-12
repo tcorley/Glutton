@@ -46,7 +46,7 @@
     
     self.collection = (FalseCollectionViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"collection"];
     
-    
+    NSArray *titles = @[@"Account Summary", @"Glutton Swipe", @"Ratings Collection"];
 
     
     SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[self.summary.view, self.swipe.view, self.collection.view] showPageControl:NO];
