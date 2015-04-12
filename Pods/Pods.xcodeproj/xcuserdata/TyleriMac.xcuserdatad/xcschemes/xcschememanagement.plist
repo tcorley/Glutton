@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Glutton-MDCSwipeToChoose.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Glutton-OAuthConsumer-OAuthConsumer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,62 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05AFE1EE7C61970B5DE1AA7D</key>
+		<key>0D8D7AC698DB7C1588DDE73E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D1B54B717EA42F88123A277</key>
+		<key>135967F1BA41DCA3264DBC4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E56DE7CEF037F7DEA5D523C</key>
+		<key>84B79D622634D07297B69BD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2937A5414C9E1F4F0EF519DA</key>
+		<key>AFA43EFCB10F43CD497CCB1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4117834949E0845E9457CC7C</key>
+		<key>DD378A6A845491F4272425B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5027F1DF03AB1DEC14086F8A</key>
+		<key>FC4CC3B7DED04FD02F7AA3C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81D2619FE4E8242E601F8067</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8091604D39C5B2891A9FDEF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D3C129923A6EA0F90D13860A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE55688AA48BD1F1D01190F2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F05F08D9D9693AB66C3B950B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6ABCA825744B0F656DA2063</key>
+		<key>FD8436582A8938F522A9CF3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

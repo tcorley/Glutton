@@ -11,7 +11,9 @@
 #import <AFNetworking.h>
 #import "FalseCollectionViewController.h"
 #import "AppDelegate.h"
-@interface SwipeViewController ()
+#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
+
+@interface SwipeViewController () <MDCSwipeToChooseDelegate>
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @end
 
@@ -24,6 +26,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
+    options.delegate = self;
+    options.likedText = @"Rate";
+    options.likedColor = [UIColor redColor];
+    options.nopeText = @"Delete";
+    options.nopeColor = [UIColor grayColor];
+    options.onPan = ^(MDCPanState *state) {
+        if (state.thresholdRatio == 1.f && state.direction == MDCSwipeDirectionLeft) {
+            NSLog(@"Should remove from the array");
+        }
+    };
+    
+    MDCSwipeToChooseView *view = [[MDCSwipeToChooseView alloc] initWithFrame:self.view.bounds options:options];
+    view.imageView.image = [UIImage imageNamed:@"sample"];
+    [self.view addSubview:view];
     
 }
 
