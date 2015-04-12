@@ -10,6 +10,7 @@
 #import "YelpYapper.h"
 #import <AFNetworking.h>
 #import "FalseCollectionViewController.h"
+#import "AppDelegate.h"
 @interface SwipeViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @end
@@ -31,11 +32,15 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", [responseObject objectForKey:@"businesses"]);
+//        NSLog(@"%@", [responseObject objectForKey:@"businesses"]);
         //need to consider multiple calls will add duplicates when persistence is added
         self.restaurants = [responseObject objectForKey:@"businesses"];
         //update the UI
         //oh, we selected one!
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.collection setCollection:self.restaurants];
+        
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);

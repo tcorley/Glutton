@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SummaryViewController.h"
+#import "SwipeViewController.h"
+#import "FalseCollectionViewController.h"
+#import "CollectionViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) SummaryViewController *summary;
+@property (strong, nonatomic) SwipeViewController *swipe;
+@property (strong, nonatomic) FalseCollectionViewController *collection;
 
 @end
 

@@ -27,11 +27,8 @@
 
 - (void)setCollection:(NSArray *)collection {
     _collection = collection;
-    NSString *label = @"";
-    for (NSDictionary *item in collection) {
-        label = [label stringByAppendingString:[NSString stringWithFormat:@"%@", item]];
-    }
-    self.textLabel.text = label;
+    NSLog(@"%@", collection);
+    self.textLabel.text = [NSString stringWithFormat:@"%@", collection];
 }
 
 /*

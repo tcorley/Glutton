@@ -10,5 +10,6 @@
 
 @interface FalseCollectionViewController : UIViewController
 @property (strong, nonatomic) NSArray *collection;
-
+- (void)setCollection:(NSArray*)collection;
 @end
+

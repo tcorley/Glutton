@@ -10,10 +10,6 @@
 #import "SLPagingViewController.h"
 #import "UIColor+SLAddition.h"
 #import "YelpYapper.h"
-#import "SwipeViewController.h"
-#import "CollectionViewController.h"
-#import "SummaryViewController.h"
-#import "FalseCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -42,22 +38,22 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    SummaryViewController *summary = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
+    self.summary = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
     
-    SwipeViewController *swipe = (SwipeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"swipe"];
+    self.swipe = (SwipeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"swipe"];
     
-//    SummaryViewController *collection = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
+//    self.collection = (SummaryViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"summary"];
     
-    FalseCollectionViewController *collection = (FalseCollectionViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"collection"];
+    self.collection = (FalseCollectionViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"collection"];
     
     
 
     
-    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[summary.view, swipe.view, collection.view] showPageControl:NO];
+    SLPagingViewController *pageViewController = [[SLPagingViewController alloc] initWithNavBarItems:@[img1, img2, img3] navBarBackground:[UIColor whiteColor] views:@[self.summary.view, self.swipe.view, self.collection.view] showPageControl:NO];
     
-    [pageViewController addChildViewController:summary];
-    [pageViewController addChildViewController:swipe];
-    [pageViewController addChildViewController:collection];
+    [pageViewController addChildViewController:self.summary];
+    [pageViewController addChildViewController:self.swipe];
+    [pageViewController addChildViewController:self.collection];
 
     
     pageViewController.navigationSideItemsStyle = SLNavigationSideItemsStyleOnBounds;
