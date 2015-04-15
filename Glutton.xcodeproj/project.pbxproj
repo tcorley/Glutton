@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1614B91ADE050D00447673 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614B81ADE050D00447673 /* Restaurant.m */; };
+		3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BC1ADE156700447673 /* ImageLabelView.m */; };
+		3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */; };
 		3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */; };
 		3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */; };
 		3E6F38841ACCD62D005739B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38831ACCD62D005739B1 /* main.m */; };
@@ -34,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E1614B71ADE050D00447673 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		3E1614B81ADE050D00447673 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		3E1614BB1ADE156700447673 /* ImageLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelView.h; sourceTree = "<group>"; };
+		3E1614BC1ADE156700447673 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
+		3E1614BE1ADE17A200447673 /* ChooseRestaurantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRestaurantView.h; sourceTree = "<group>"; };
+		3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRestaurantView.m; sourceTree = "<group>"; };
 		3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
@@ -85,6 +94,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E1614B41ADE03AA00447673 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D0CB1121AD09C0A005D600B /* SummaryViewController.h */,
+				5D0CB1131AD09C0A005D600B /* SummaryViewController.m */,
+				3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */,
+				3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */,
+				3E6F38881ACCD62D005739B1 /* ViewController.h */,
+				3E6F38891ACCD62D005739B1 /* ViewController.m */,
+				5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */,
+				5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */,
+				5D0CB1151AD09CCE005D600B /* CollectionViewController.h */,
+				5D0CB1161AD09CCE005D600B /* CollectionViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E1614B51ADE03D000447673 /* Network Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */,
+				3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */,
+				3E6F38A71ACD0EB0005739B1 /* APICredentials.h */,
+				3E6F38A81ACD1072005739B1 /* ExampleAPICredentials.h */,
+				3E6F38A91ACD10FC005739B1 /* YelpYapper.h */,
+				3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */,
+			);
+			name = "Network Interfaces";
+			sourceTree = "<group>";
+		};
+		3E1614B61ADE04E800447673 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E1614B71ADE050D00447673 /* Restaurant.h */,
+				3E1614B81ADE050D00447673 /* Restaurant.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3E1614BA1ADE14A500447673 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E1614BB1ADE156700447673 /* ImageLabelView.h */,
+				3E1614BC1ADE156700447673 /* ImageLabelView.m */,
+				3E1614BE1ADE17A200447673 /* ChooseRestaurantView.h */,
+				3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		3E6F38751ACCD62C005739B1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,27 +167,14 @@
 		3E6F38801ACCD62D005739B1 /* Glutton */ = {
 			isa = PBXGroup;
 			children = (
-				3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */,
-				3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */,
+				3E1614BA1ADE14A500447673 /* Views */,
+				3E1614B61ADE04E800447673 /* Models */,
+				3E1614B51ADE03D000447673 /* Network Interfaces */,
+				3E1614B41ADE03AA00447673 /* Controllers */,
 				3E6F38851ACCD62D005739B1 /* AppDelegate.h */,
 				3E6F38861ACCD62D005739B1 /* AppDelegate.m */,
-				5D0CB1121AD09C0A005D600B /* SummaryViewController.h */,
-				5D0CB1131AD09C0A005D600B /* SummaryViewController.m */,
-				3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */,
-				3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */,
-				3E6F38A71ACD0EB0005739B1 /* APICredentials.h */,
-				3E6F38A81ACD1072005739B1 /* ExampleAPICredentials.h */,
-				3E6F38A91ACD10FC005739B1 /* YelpYapper.h */,
-				3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */,
-				3E6F38881ACCD62D005739B1 /* ViewController.h */,
-				3E6F38891ACCD62D005739B1 /* ViewController.m */,
 				3E6F388B1ACCD62D005739B1 /* Main.storyboard */,
-				5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */,
-				5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */,
-				5D0CB1151AD09CCE005D600B /* CollectionViewController.h */,
-				5D0CB1161AD09CCE005D600B /* CollectionViewController.m */,
 				3E6F388E1ACCD62D005739B1 /* Images.xcassets */,
-				3E6F38901ACCD62D005739B1 /* LaunchScreen.xib */,
 				3E6F38811ACCD62D005739B1 /* Supporting Files */,
 			);
 			path = Glutton;
@@ -137,6 +183,7 @@
 		3E6F38811ACCD62D005739B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E6F38901ACCD62D005739B1 /* LaunchScreen.xib */,
 				3E6F38821ACCD62D005739B1 /* Info.plist */,
 				3E6F38831ACCD62D005739B1 /* main.m */,
 			);
@@ -314,11 +361,14 @@
 			files = (
 				5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */,
 				3E6F388A1ACCD62D005739B1 /* ViewController.m in Sources */,
+				3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
 				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
+				3E1614B91ADE050D00447673 /* Restaurant.m in Sources */,
 				5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */,
+				3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */,
 				3E6F38841ACCD62D005739B1 /* main.m in Sources */,
 				5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */,
 			);
