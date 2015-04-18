@@ -8,36 +8,63 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-Glutton-AFOAuth2Manager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-Glutton-MDCSwipeToChoose.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-Glutton-OAuthConsumer-OAuthConsumer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-Glutton-OAuthConsumer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-Glutton-SLPagingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-Glutton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>05AFE1EE7C61970B5DE1AA7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0D8D7AC698DB7C1588DDE73E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>135967F1BA41DCA3264DBC4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +84,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>84B79D622634D07297B69BD7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AFA43EFCB10F43CD497CCB1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B8091604D39C5B2891A9FDEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DD378A6A845491F4272425B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F6ABCA825744B0F656DA2063</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC4CC3B7DED04FD02F7AA3C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD8436582A8938F522A9CF3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

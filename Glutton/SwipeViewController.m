@@ -29,17 +29,63 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 #pragma mark - UIViewController Overrides
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _restaurants = [[self defaultRestaurants] mutableCopy];
+//        [self getBusinesses];
+    }
+    return self;
+}
+
+- (NSArray *)defaultRestaurants {
+    return @[
+             [[Restaurant alloc] initWithId:@"34"
+                                       name:@"Franklin's"
+                                 categories:@[@"Barbecue"]
+                                      phone:@"5121322231"
+                                   imageURL:@"godaddy.com"
+                                   location:@{@"keys":@"somewhere"}
+                                     rating:@5
+                                reviewCount:@71
+                            snippetImageURL:@"godating.com"
+                                    snippet:@"wow. What barbeque"],
+             [[Restaurant alloc] initWithId:@"25"
+                                       name:@"Franklin's"
+                                 categories:@[@"Barbecue"]
+                                      phone:@"5121322231"
+                                   imageURL:@"godaddy.com"
+                                   location:@{@"keys":@"somewhere"}
+                                     rating:@4
+                                reviewCount:@69
+                            snippetImageURL:@"godating.com"
+                                    snippet:@"wow. What barbeque"]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
-    [self.view addSubview:self.frontCardView];
+    _restaurants = [[self defaultRestaurants] mutableCopy];
     
-    self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
-    [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+    NSLog(@"Should Have values here: %lu", [self.restaurants count]);
+    
+        self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
+    NSLog(@"%lu", [self.restaurants count]);
+        [self.view addSubview:self.frontCardView];
+    
+
+        self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
+        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+
     
     [self constructNopeButton];
     [self constructLikedButton];
+    
+    NSLog(@"this view has %lu subviews", [[self.view subviews] count]);
+    
+    for (UIView *view in [self.view subviews]){
+        NSLog(@"View: %@", view);
+    }
     
 }
 
@@ -78,7 +124,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 - (ChooseRestaurantView *)popPersonViewWithFrame:(CGRect)frame {
-    if ([self.restaurants count]) {
+    //AAAHAHAAHAHAAAAAAAA
+    if (![self.restaurants count]) {
         return nil;
     }
     MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
@@ -111,7 +158,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)constructNopeButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"nope"];
+    UIImage *image = [UIImage imageNamed:@"trash"];
     button.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
                               CGRectGetMaxY(self.backCardView.frame) + ChooseRestaurantButtonVerticalPadding,
                               image.size.width,
@@ -156,21 +203,29 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //call method to construct all the restaurant objects
-        //view did load stuff here? (construct cards?
         
+        NSMutableArray *array = [[NSMutableArray alloc] init];
         
+        for(NSDictionary *r in [responseObject objectForKey:@"businesses"]) {
+            Restaurant *temp = [[Restaurant alloc] initWithId:[r objectForKey:@"id"]
+                                                         name:[r objectForKey:@"name"]
+                                                   categories:[r objectForKey:@"categories"]
+                                                        phone:[r objectForKey:@"phone"]
+                                                     imageURL:[r objectForKey:@"image_url"]
+                                                     location:[r objectForKey:@"location"]
+                                                       rating:[r objectForKey:@"rating"]
+                                                  reviewCount:[r objectForKey:@"rating_count"]
+                                              snippetImageURL:[r objectForKey:@"snippet_image_url"]
+                                                      snippet:[r objectForKey:@"snippet"]];
+            [array addObject:temp];
+        }
+        self.restaurants = [[NSMutableArray alloc] initWithArray:array];
+        NSLog(@"Done with getting businesses");
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        //uipopup to let them know that something happened with the network connection...
+        //UIAlertView to let them know that something happened with the network connection...
     }] start];
-}
-
-//get rid of this pls
-- (IBAction)doTheNetworkThing:(id)sender {
-    NSLog(@"doTheNetworkThing");
-    [self getBusinesses];
 }
 
 @end

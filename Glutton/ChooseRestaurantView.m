@@ -32,7 +32,7 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
                                 UIViewAutoresizingFlexibleBottomMargin;
         self.imageView.autoresizingMask = self.autoresizingMask;
         
-        [self setImageInBackground];
+//        [self setImageInBackground];
         
         [self constructInformationView];
         
