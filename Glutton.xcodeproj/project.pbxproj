@@ -10,6 +10,16 @@
 		3E1614B91ADE050D00447673 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614B81ADE050D00447673 /* Restaurant.m */; };
 		3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BC1ADE156700447673 /* ImageLabelView.m */; };
 		3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */; };
+		3E35DB3B1AE440690066EFEA /* GluttonTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */; };
+		3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */; };
+		3E35DB481AE45D9B0066EFEA /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB401AE45D6F0066EFEA /* Lobster-Regular.ttf */; };
+		3E35DB491AE45D9B0066EFEA /* MartelSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB411AE45D6F0066EFEA /* MartelSans-Black.ttf */; };
+		3E35DB4A1AE45D9B0066EFEA /* MartelSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB421AE45D6F0066EFEA /* MartelSans-Bold.ttf */; };
+		3E35DB4B1AE45D9B0066EFEA /* MartelSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB431AE45D6F0066EFEA /* MartelSans-ExtraBold.ttf */; };
+		3E35DB4C1AE45D9B0066EFEA /* MartelSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB441AE45D6F0066EFEA /* MartelSans-ExtraLight.ttf */; };
+		3E35DB4D1AE45D9B0066EFEA /* MartelSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB451AE45D6F0066EFEA /* MartelSans-Light.ttf */; };
+		3E35DB4E1AE45D9B0066EFEA /* MartelSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB461AE45D6F0066EFEA /* MartelSans-Regular.ttf */; };
+		3E35DB4F1AE45D9B0066EFEA /* MartelSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB471AE45D6F0066EFEA /* MartelSans-SemiBold.ttf */; };
 		3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */; };
 		3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */; };
 		3E6F38841ACCD62D005739B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38831ACCD62D005739B1 /* main.m */; };
@@ -42,6 +52,18 @@
 		3E1614BC1ADE156700447673 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
 		3E1614BE1ADE17A200447673 /* ChooseRestaurantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRestaurantView.h; sourceTree = "<group>"; };
 		3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRestaurantView.m; sourceTree = "<group>"; };
+		3E35DB391AE440690066EFEA /* GluttonTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GluttonTabBarController.h; sourceTree = "<group>"; };
+		3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GluttonTabBarController.m; sourceTree = "<group>"; };
+		3E35DB3C1AE455EC0066EFEA /* GluttonNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GluttonNavigationController.h; sourceTree = "<group>"; };
+		3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GluttonNavigationController.m; sourceTree = "<group>"; };
+		3E35DB401AE45D6F0066EFEA /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		3E35DB411AE45D6F0066EFEA /* MartelSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Black.ttf"; sourceTree = "<group>"; };
+		3E35DB421AE45D6F0066EFEA /* MartelSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Bold.ttf"; sourceTree = "<group>"; };
+		3E35DB431AE45D6F0066EFEA /* MartelSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3E35DB441AE45D6F0066EFEA /* MartelSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		3E35DB451AE45D6F0066EFEA /* MartelSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Light.ttf"; sourceTree = "<group>"; };
+		3E35DB461AE45D6F0066EFEA /* MartelSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Regular.ttf"; sourceTree = "<group>"; };
+		3E35DB471AE45D6F0066EFEA /* MartelSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
@@ -102,6 +124,10 @@
 				5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */,
 				5D0CB1151AD09CCE005D600B /* CollectionViewController.h */,
 				5D0CB1161AD09CCE005D600B /* CollectionViewController.m */,
+				3E35DB391AE440690066EFEA /* GluttonTabBarController.h */,
+				3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */,
+				3E35DB3C1AE455EC0066EFEA /* GluttonNavigationController.h */,
+				3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +165,21 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		3E35DB3F1AE45D500066EFEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E35DB401AE45D6F0066EFEA /* Lobster-Regular.ttf */,
+				3E35DB411AE45D6F0066EFEA /* MartelSans-Black.ttf */,
+				3E35DB421AE45D6F0066EFEA /* MartelSans-Bold.ttf */,
+				3E35DB431AE45D6F0066EFEA /* MartelSans-ExtraBold.ttf */,
+				3E35DB441AE45D6F0066EFEA /* MartelSans-ExtraLight.ttf */,
+				3E35DB451AE45D6F0066EFEA /* MartelSans-Light.ttf */,
+				3E35DB461AE45D6F0066EFEA /* MartelSans-Regular.ttf */,
+				3E35DB471AE45D6F0066EFEA /* MartelSans-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		3E6F38751ACCD62C005739B1 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +203,7 @@
 		3E6F38801ACCD62D005739B1 /* Glutton */ = {
 			isa = PBXGroup;
 			children = (
+				3E35DB3F1AE45D500066EFEA /* Resources */,
 				3E1614BA1ADE14A500447673 /* Views */,
 				3E1614B61ADE04E800447673 /* Models */,
 				3E1614B51ADE03D000447673 /* Network Interfaces */,
@@ -301,9 +343,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E35DB4C1AE45D9B0066EFEA /* MartelSans-ExtraLight.ttf in Resources */,
 				3E6F388D1ACCD62D005739B1 /* Main.storyboard in Resources */,
+				3E35DB481AE45D9B0066EFEA /* Lobster-Regular.ttf in Resources */,
 				3E6F38921ACCD62D005739B1 /* LaunchScreen.xib in Resources */,
+				3E35DB4A1AE45D9B0066EFEA /* MartelSans-Bold.ttf in Resources */,
+				3E35DB4D1AE45D9B0066EFEA /* MartelSans-Light.ttf in Resources */,
+				3E35DB491AE45D9B0066EFEA /* MartelSans-Black.ttf in Resources */,
+				3E35DB4F1AE45D9B0066EFEA /* MartelSans-SemiBold.ttf in Resources */,
+				3E35DB4E1AE45D9B0066EFEA /* MartelSans-Regular.ttf in Resources */,
 				3E6F388F1ACCD62D005739B1 /* Images.xcassets in Resources */,
+				3E35DB4B1AE45D9B0066EFEA /* MartelSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +412,9 @@
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
 				3E1614B91ADE050D00447673 /* Restaurant.m in Sources */,
 				5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */,
+				3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */,
 				3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */,
+				3E35DB3B1AE440690066EFEA /* GluttonTabBarController.m in Sources */,
 				3E6F38841ACCD62D005739B1 /* main.m in Sources */,
 				5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */,
 			);

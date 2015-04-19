@@ -19,6 +19,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 @interface SwipeViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurants;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+
 @end
 
 @implementation SwipeViewController
@@ -28,15 +30,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 #pragma mark - UIViewController Overrides
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _restaurants = [[self defaultRestaurants] mutableCopy];
-//        [self getBusinesses];
-    }
-    return self;
-}
 
 - (NSArray *)defaultRestaurants {
     return @[
@@ -62,30 +55,31 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
                                     snippet:@"wow. What barbeque"]];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _restaurants = [[self defaultRestaurants] mutableCopy];
     
-    NSLog(@"Should Have values here: %lu", [self.restaurants count]);
     
-        self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
-    NSLog(@"%lu", [self.restaurants count]);
-        [self.view addSubview:self.frontCardView];
+    [self.loadingIndicator setHidesWhenStopped:YES];
+    [self.loadingIndicator startAnimating];
     
-
-        self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
-        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+//    _restaurants = [[self defaultRestaurants] mutableCopy];
+    
+    [self getBusinesses];
+    
+    
 
     
     [self constructNopeButton];
     [self constructLikedButton];
-    
-    NSLog(@"this view has %lu subviews", [[self.view subviews] count]);
-    
-    for (UIView *view in [self.view subviews]){
-        NSLog(@"View: %@", view);
-    }
     
 }
 
@@ -129,6 +123,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         return nil;
     }
     MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
+    options.likedText = @"Rate";
+    options.nopeText = @"Nah";
     options.delegate = self;
     options.threshold = 160.f;
     options.onPan = ^(MDCPanState *state) {
@@ -146,8 +142,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (CGRect)frontCardViewFrame {
     CGFloat horizontalPadding = 20.f;
-    CGFloat topPadding = 60.f;
-    CGFloat bottomPadding = 200.f;
+    CGFloat topPadding = 80.f;
+    CGFloat bottomPadding = 220.f;
     return CGRectMake(horizontalPadding, topPadding, CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding);
 }
 
@@ -160,7 +156,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"trash"];
     button.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
-                              CGRectGetMaxY(self.backCardView.frame) + ChooseRestaurantButtonVerticalPadding,
+                              CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding,
                               image.size.width,
                               image.size.height);
     [button setImage:image forState:UIControlStateNormal];
@@ -179,7 +175,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 - (void)constructLikedButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"trash"];
-    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
+    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
     [button setImage:image forState:UIControlStateNormal];
     [button setTintColor:[UIColor colorWithRed:29.f/255.f green:245.f/255.f blue:106.f/255.f alpha:1.f]];
     [button addTarget:self action:@selector(likeFrontCardView) forControlEvents:UIControlEventTouchUpInside];
@@ -214,7 +210,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
                                                      imageURL:[r objectForKey:@"image_url"]
                                                      location:[r objectForKey:@"location"]
                                                        rating:[r objectForKey:@"rating"]
-                                                  reviewCount:[r objectForKey:@"rating_count"]
+                                                  reviewCount:[r objectForKey:@"review_count"]
                                               snippetImageURL:[r objectForKey:@"snippet_image_url"]
                                                       snippet:[r objectForKey:@"snippet"]];
             [array addObject:temp];
@@ -222,8 +218,32 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         self.restaurants = [[NSMutableArray alloc] initWithArray:array];
         NSLog(@"Done with getting businesses");
         
+        [self.loadingIndicator stopAnimating];
+        
+        self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
+        self.frontCardView.alpha = 0.0;
+        [self.view addSubview:self.frontCardView];
+        
+        
+        self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
+        self.backCardView.alpha = 0.0;
+        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            self.frontCardView.alpha = 1.0;
+        }];
+        
+        [UIView animateWithDuration:1.0
+                              delay:1.0
+                            options:0
+                         animations:^{
+                             self.backCardView.alpha = 1.0;
+                         }
+                         completion:nil];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+        [self.loadingIndicator stopAnimating];
         //UIAlertView to let them know that something happened with the network connection...
     }] start];
 }

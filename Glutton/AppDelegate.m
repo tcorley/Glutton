@@ -21,6 +21,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    for (NSString * family in [UIFont familyNames]) {
+        NSLog(@"%@", family);
+        
+        for (NSString *name in [UIFont fontNamesForFamilyName:family]) {
+            NSLog(@"  %@", name);
+        }
+    }
     // Override point for customization after application launch.
 //    [YelpYapper getBusinesses];
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -100,6 +108,7 @@
     
 //    [self.window setRootViewController:[SwipeViewController new]];
 //    [self setWindow:self.window];
+//    [self.window.rootViewController.tabBarController setSelectedIndex:1];
     return YES;
 }
 

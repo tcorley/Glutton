@@ -9,6 +9,7 @@
 #import "ChooseRestaurantView.h"
 #import "ImageLabelView.h"
 #import "Restaurant.h"
+#import <AFNetworking/AFNetworking.h>
 
 static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 
@@ -17,6 +18,7 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) ImageLabelView *reviewersImageLabelView;
 @property (nonatomic, strong) ImageLabelView *starImageLabelView;
+@property (nonatomic, strong) UIActivityIndicatorView *picLoading;
 @end
 
 @implementation ChooseRestaurantView
@@ -24,15 +26,23 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 - (instancetype)initWithFrame:(CGRect)frame restaurant:(Restaurant *)restaurant options:(MDCSwipeToChooseViewOptions *)options {
     self = [super initWithFrame:frame options:options];
     if (self) {
-        _restaurant = restaurant;
-        self.imageView.image = [UIImage imageNamed:@"sample"];
         
+        
+        [self setBackgroundColor:[UIColor grayColor]];
+        _restaurant = restaurant;
+//        self.imageView.image = [UIImage imageNamed:@"sample"];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight |
                                 UIViewAutoresizingFlexibleWidth  |
                                 UIViewAutoresizingFlexibleBottomMargin;
         self.imageView.autoresizingMask = self.autoresizingMask;
         
-//        [self setImageInBackground];
+        self.picLoading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.picLoading setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
+        [self.picLoading setHidesWhenStopped:YES];
+        [self addSubview:self.picLoading];
+        [self.picLoading startAnimating];
+        NSLog(@"%@", self.restaurant.imageURL);
+        [self setImageInBackground];
         
         [self constructInformationView];
         
@@ -41,7 +51,16 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 }
 
 - (void)setImageInBackground {
-    //in the block
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
+    [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.picLoading stopAnimating];
+        self.imageView.image = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.picLoading stopAnimating];
+        self.imageView.image = [UIImage imageNamed:@"sample"];
+    }];
+    [requestOperation start];
 }
 
 - (void)constructInformationView {
@@ -61,10 +80,14 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 
 - (void)constructNameLabel {
     CGFloat leftPadding = 12.f;
-    CGFloat topPadding = 17.f;
-    CGRect frame = CGRectMake(leftPadding, topPadding, floorf(CGRectGetWidth(_informationView.frame)/2), CGRectGetHeight(_informationView.frame) - topPadding);
+    CGFloat topPadding = 2.f;
+    CGRect frame = CGRectMake(leftPadding, topPadding, floorf(CGRectGetWidth(_informationView.frame)/1.33), CGRectGetHeight(_informationView.frame) - topPadding);
     _nameLabel = [[UILabel alloc] initWithFrame:frame];
+    _nameLabel.font = [UIFont fontWithName:@"MartelSans-Light" size:29];
+    [_nameLabel setAdjustsFontSizeToFitWidth:YES];
     _nameLabel.text = _restaurant.name;
+    _nameLabel.shadowColor = [UIColor grayColor];
+    _nameLabel.shadowOffset = CGSizeMake(0.0, 1.0);
     [_informationView addSubview:_nameLabel];
 }
 
