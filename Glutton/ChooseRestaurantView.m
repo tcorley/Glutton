@@ -41,7 +41,7 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
         [self.picLoading setHidesWhenStopped:YES];
         [self addSubview:self.picLoading];
         [self.picLoading startAnimating];
-        NSLog(@"%@", self.restaurant.imageURL);
+        //NSLog(@"%@", self.restaurant.imageURL);
         [self setImageInBackground];
         
         [self constructInformationView];
@@ -83,7 +83,7 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
     CGFloat topPadding = 2.f;
     CGRect frame = CGRectMake(leftPadding, topPadding, floorf(CGRectGetWidth(_informationView.frame)/1.33), CGRectGetHeight(_informationView.frame) - topPadding);
     _nameLabel = [[UILabel alloc] initWithFrame:frame];
-    _nameLabel.font = [UIFont fontWithName:@"MartelSans-Light" size:29];
+    _nameLabel.font = [UIFont fontWithName:@"Lobster-Regular" size:29];
     [_nameLabel setAdjustsFontSizeToFitWidth:YES];
     _nameLabel.text = _restaurant.name;
     _nameLabel.shadowColor = [UIColor grayColor];

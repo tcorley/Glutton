@@ -14,5 +14,6 @@
     [super viewDidLoad];
     [self setSelectedIndex:1];
     [self.tabBar setTintColor:[UIColor colorWithRed: 0.749 green: 0.341 blue: 0 alpha: 1]];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"MartelSans-Light" size:10], NSFontAttributeName, nil] forState:UIControlStateNormal];
 }
 @end

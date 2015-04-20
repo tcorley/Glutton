@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Restaurant.h"
 
 @interface CollectionViewController : UICollectionViewController
+
 
 @end

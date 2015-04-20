@@ -208,10 +208,6 @@
 				3E1614B61ADE04E800447673 /* Models */,
 				3E1614B51ADE03D000447673 /* Network Interfaces */,
 				3E1614B41ADE03AA00447673 /* Controllers */,
-				3E6F38851ACCD62D005739B1 /* AppDelegate.h */,
-				3E6F38861ACCD62D005739B1 /* AppDelegate.m */,
-				3E6F388B1ACCD62D005739B1 /* Main.storyboard */,
-				3E6F388E1ACCD62D005739B1 /* Images.xcassets */,
 				3E6F38811ACCD62D005739B1 /* Supporting Files */,
 			);
 			path = Glutton;
@@ -220,6 +216,10 @@
 		3E6F38811ACCD62D005739B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E6F38851ACCD62D005739B1 /* AppDelegate.h */,
+				3E6F38861ACCD62D005739B1 /* AppDelegate.m */,
+				3E6F388B1ACCD62D005739B1 /* Main.storyboard */,
+				3E6F388E1ACCD62D005739B1 /* Images.xcassets */,
 				3E6F38901ACCD62D005739B1 /* LaunchScreen.xib */,
 				3E6F38821ACCD62D005739B1 /* Info.plist */,
 				3E6F38831ACCD62D005739B1 /* main.m */,

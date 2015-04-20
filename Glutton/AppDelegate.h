@@ -15,6 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSArray *toRate;
 //@property (strong, nonatomic) SummaryViewController *summary;
 //@property (strong, nonatomic) SwipeViewController *swipe;
 //@property (strong, nonatomic) FalseCollectionViewController *collection;

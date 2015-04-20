@@ -7,14 +7,17 @@
 //
 
 #import "CollectionViewController.h"
+#import "AppDelegate.h"
 
 @interface CollectionViewController ()
+@property (strong, nonatomic) NSMutableArray *restaurantsToRate;
+@property (strong, nonatomic) NSMutableArray *restaurantsRated;
 
 @end
 
 @implementation CollectionViewController
 
-static NSString * const reuseIdentifier = @"cell";
+//static NSString * const reuseIdentifier = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,14 +26,28 @@ static NSString * const reuseIdentifier = @"cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
+    self.restaurantsRated = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 100; i++) {
+        [self.restaurantsRated addObject:@(i)];
+    }
+    NSLog(@"Found %lu restaurants", [self.restaurantsToRate count]);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
 }
 
 /*
@@ -52,16 +69,23 @@ static NSString * const reuseIdentifier = @"cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return [self.restaurantsRated count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     // Configure the cell
+    cell.backgroundColor = [UIColor purpleColor];
     
     return cell;
 }
+
+- (NSMutableArray *)restaurantsToRate {
+    return _restaurantsToRate ?: [[NSMutableArray alloc] init];
+}
+
+
 
 #pragma mark <UICollectionViewDelegate>
 

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Summary-->
+        <!--User Summary-->
         <scene sceneID="XRl-u5-z2d">
             <objects>
                 <viewController storyboardIdentifier="summary" id="QWN-L6-4XA" customClass="SummaryViewController" sceneMemberID="viewController">
@@ -25,51 +25,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gij-hE-QbM" firstAttribute="centerX" secondItem="FIe-iI-zim" secondAttribute="centerX" id="0rb-P1-Fh1"/>
-                            <constraint firstItem="Gij-hE-QbM" firstAttribute="top" secondItem="o1O-JV-1TV" secondAttribute="bottom" constant="337" id="RpU-1M-Hmr"/>
+                            <constraint firstItem="Gij-hE-QbM" firstAttribute="centerX" secondItem="FIe-iI-zim" secondAttribute="centerX" id="BBZ-nO-Fau"/>
+                            <constraint firstItem="Gij-hE-QbM" firstAttribute="top" secondItem="o1O-JV-1TV" secondAttribute="bottom" constant="293" id="jf6-m0-vUn"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Summary" image="user" id="xAZ-ME-vck"/>
+                    <navigationItem key="navigationItem" title="User Summary" id="4UG-Lj-zfu"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWy-eP-8Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-1307"/>
-        </scene>
-        <!--Collection-->
-        <scene sceneID="0AM-A3-pXU">
-            <objects>
-                <viewController storyboardIdentifier="collection" id="eYy-Vs-YM5" customClass="FalseCollectionViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IEv-Pp-6d2"/>
-                        <viewControllerLayoutGuide type="bottom" id="ieL-uS-lai"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tbh-k0-sQf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There should be json here soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEx-z6-Wq7">
-                                <rect key="frame" x="87" y="357" width="241" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="eEx-z6-Wq7" firstAttribute="centerX" secondItem="tbh-k0-sQf" secondAttribute="centerX" id="ahB-HE-yXC"/>
-                            <constraint firstItem="eEx-z6-Wq7" firstAttribute="top" secondItem="IEv-Pp-6d2" secondAttribute="bottom" constant="337" id="qcv-ed-8fu"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="Cxj-YJ-Cj5"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="textLabel" destination="eEx-z6-Wq7" id="ahp-Uw-KCn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5z2-M8-Ebb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="358" y="-495"/>
+            <point key="canvasLocation" x="984" y="-1307"/>
         </scene>
         <!--Glutton Swipe-->
         <scene sceneID="gFc-IM-T6Q">
@@ -100,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503" y="-924"/>
+            <point key="canvasLocation" x="2755" y="-924"/>
         </scene>
         <!--Glutton Tab Bar Controller-->
         <scene sceneID="iVV-Yt-NTF">
@@ -114,14 +79,50 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QWN-L6-4XA" kind="relationship" relationship="viewControllers" id="Afe-9I-URS"/>
+                        <segue destination="mSd-5J-Fh3" kind="relationship" relationship="viewControllers" id="Afe-9I-URS"/>
                         <segue destination="XRI-FV-A3A" kind="relationship" relationship="viewControllers" id="KXe-nr-ybM"/>
-                        <segue destination="eYy-Vs-YM5" kind="relationship" relationship="viewControllers" id="waX-T8-kF9"/>
+                        <segue destination="1EB-tC-iIs" kind="relationship" relationship="viewControllers" id="2Gn-Js-8oo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgk-N6-YIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-176" y="-892"/>
+        </scene>
+        <!--Glutton Collection-->
+        <scene sceneID="mh1-uw-fCE">
+            <objects>
+                <collectionViewController id="Q6h-yd-8dO" customClass="CollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KFG-C2-auL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aWS-1R-hzi">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="LI4-sQ-EdX">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Q6h-yd-8dO" id="g3Y-ib-LOg"/>
+                            <outlet property="delegate" destination="Q6h-yd-8dO" id="MsN-LR-iRK"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Glutton Collection" id="2NE-rD-qA3"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88r-xw-R1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="-452"/>
         </scene>
         <!--Swipe-->
         <scene sceneID="tOh-d4-nk9">
@@ -140,7 +141,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf6-bK-O2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="-924"/>
+            <point key="canvasLocation" x="2129" y="-924"/>
+        </scene>
+        <!--Collection-->
+        <scene sceneID="Vqu-Ao-KY2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1EB-tC-iIs" customClass="GluttonNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="IVa-i4-2nh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s0r-CC-ZKc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q6h-yd-8dO" kind="relationship" relationship="rootViewController" id="hS2-yF-U2b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ez-P2-0PZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358" y="-452"/>
+        </scene>
+        <!--Summary-->
+        <scene sceneID="JEi-8J-6OZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mSd-5J-Fh3" customClass="GluttonNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Summary" image="user" id="xAZ-ME-vck"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jQJ-qI-mJh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QWN-L6-4XA" kind="relationship" relationship="rootViewController" id="p29-p2-GP7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvi-xq-red" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358" y="-1307"/>
         </scene>
     </scenes>
     <resources>

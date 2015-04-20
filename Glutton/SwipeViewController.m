@@ -90,14 +90,17 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 #pragma mark - MDCSwipeToChooseDelegate Protocol Methods
 
 - (void)viewDidCancelSwipe:(UIView *)view {
-    NSLog(@"Somthing productive here?");
+    //NSLog(@"Somthing productive here?");
 }
 
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
     if (direction == MDCSwipeDirectionLeft) {
-        //do something
+        
     } else {
-        //do something else
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSMutableArray *array = [NSMutableArray arrayWithArray:delegate.toRate];
+        [array insertObject:self.currentRestaurant atIndex:0];
+        [delegate setToRate:array];
     }
     
     self.frontCardView = self.backCardView;
@@ -195,7 +198,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 #pragma mark Network Calls and Objectification
 
 - (void)getBusinesses {
-    NSLog(@"Get businesses");
+//    NSLog(@"Get businesses");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
