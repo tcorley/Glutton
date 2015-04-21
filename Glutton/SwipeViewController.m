@@ -101,6 +101,13 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         NSMutableArray *array = [NSMutableArray arrayWithArray:delegate.toRate];
         [array insertObject:self.currentRestaurant atIndex:0];
         [delegate setToRate:array];
+        UITabBarItem *collectionTab = [self.tabBarController.tabBar.items objectAtIndex:2];
+        if (!collectionTab.badgeValue) {
+            [collectionTab setBadgeValue:@"1"];
+        } else {
+            long badgeValue = [[collectionTab badgeValue] integerValue];
+            [collectionTab setBadgeValue:[NSString stringWithFormat:@"%lu", badgeValue+1]];
+        }
     }
     
     self.frontCardView = self.backCardView;

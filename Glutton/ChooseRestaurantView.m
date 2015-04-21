@@ -35,7 +35,8 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
                                 UIViewAutoresizingFlexibleWidth  |
                                 UIViewAutoresizingFlexibleBottomMargin;
         self.imageView.autoresizingMask = self.autoresizingMask;
-        
+        [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [self.imageView setClipsToBounds:YES];
         self.picLoading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self.picLoading setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
         [self.picLoading setHidesWhenStopped:YES];

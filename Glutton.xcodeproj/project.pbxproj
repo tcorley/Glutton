@@ -10,6 +10,9 @@
 		3E1614B91ADE050D00447673 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614B81ADE050D00447673 /* Restaurant.m */; };
 		3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BC1ADE156700447673 /* ImageLabelView.m */; };
 		3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */; };
+		3E18B25B1AE5B0660027BB60 /* RestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E18B25A1AE5B0660027BB60 /* RestaurantCell.m */; };
+		3E18B25E1AE5D7D50027BB60 /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E18B25D1AE5D7D50027BB60 /* RestaurantDetailViewController.m */; };
+		3E18B2601AE5F11B0027BB60 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E18B25F1AE5F11B0027BB60 /* MapKit.framework */; };
 		3E35DB3B1AE440690066EFEA /* GluttonTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */; };
 		3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */; };
 		3E35DB481AE45D9B0066EFEA /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB401AE45D6F0066EFEA /* Lobster-Regular.ttf */; };
@@ -52,6 +55,11 @@
 		3E1614BC1ADE156700447673 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
 		3E1614BE1ADE17A200447673 /* ChooseRestaurantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRestaurantView.h; sourceTree = "<group>"; };
 		3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRestaurantView.m; sourceTree = "<group>"; };
+		3E18B2591AE5B0660027BB60 /* RestaurantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCell.h; sourceTree = "<group>"; };
+		3E18B25A1AE5B0660027BB60 /* RestaurantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCell.m; sourceTree = "<group>"; };
+		3E18B25C1AE5D7D50027BB60 /* RestaurantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailViewController.h; sourceTree = "<group>"; };
+		3E18B25D1AE5D7D50027BB60 /* RestaurantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailViewController.m; sourceTree = "<group>"; };
+		3E18B25F1AE5F11B0027BB60 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3E35DB391AE440690066EFEA /* GluttonTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GluttonTabBarController.h; sourceTree = "<group>"; };
 		3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GluttonTabBarController.m; sourceTree = "<group>"; };
 		3E35DB3C1AE455EC0066EFEA /* GluttonNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GluttonNavigationController.h; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E18B2601AE5F11B0027BB60 /* MapKit.framework in Frameworks */,
 				C38BFD54F4564454AFCEECE5 /* libPods-Glutton.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +137,8 @@
 				3E35DB3A1AE440690066EFEA /* GluttonTabBarController.m */,
 				3E35DB3C1AE455EC0066EFEA /* GluttonNavigationController.h */,
 				3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */,
+				3E18B25C1AE5D7D50027BB60 /* RestaurantDetailViewController.h */,
+				3E18B25D1AE5D7D50027BB60 /* RestaurantDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -161,6 +172,8 @@
 				3E1614BC1ADE156700447673 /* ImageLabelView.m */,
 				3E1614BE1ADE17A200447673 /* ChooseRestaurantView.h */,
 				3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */,
+				3E18B2591AE5B0660027BB60 /* RestaurantCell.h */,
+				3E18B25A1AE5B0660027BB60 /* RestaurantCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -247,6 +260,7 @@
 		D76C2593DF664CE9BD8D035F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E18B25F1AE5F11B0027BB60 /* MapKit.framework */,
 				A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */,
 			);
 			name = Frameworks;
@@ -312,6 +326,11 @@
 				TargetAttributes = {
 					3E6F387D1ACCD62D005739B1 = {
 						CreatedOnToolsVersion = 6.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					3E6F38961ACCD62D005739B1 = {
 						CreatedOnToolsVersion = 6.2;
@@ -405,7 +424,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */,
+				3E18B25E1AE5D7D50027BB60 /* RestaurantDetailViewController.m in Sources */,
 				3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */,
+				3E18B25B1AE5B0660027BB60 /* RestaurantCell.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
 				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,

@@ -8,16 +8,22 @@
 
 #import "CollectionViewController.h"
 #import "AppDelegate.h"
+#import "RestaurantCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import "RestaurantDetailViewController.h"
+#import "GluttonNavigationController.h"
 
 @interface CollectionViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurantsToRate;
 @property (strong, nonatomic) NSMutableArray *restaurantsRated;
+@property (nonatomic) long index;
+@property (strong, nonatomic) UIImage *sendingImage;
 
 @end
 
 @implementation CollectionViewController
 
-//static NSString * const reuseIdentifier = @"cell";
+static NSString * const reuseIdentifier = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,15 +32,14 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+//    [self.collectionView registerClass:[RestaurantCell class] forCellWithReuseIdentifier:reuseIdentifier];
+//    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     
     // Do any additional setup after loading the view.
-    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
     self.restaurantsRated = [[NSMutableArray alloc] init];
     for (int i = 0; i < 100; i++) {
         [self.restaurantsRated addObject:@(i)];
     }
-    NSLog(@"Found %lu restaurants", [self.restaurantsToRate count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,10 +49,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:nil];
     self.navigationController.navigationBarHidden = YES;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
+    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
+    NSLog(@"Found %lu restaurants", [self.restaurantsToRate count]);
+    [self.collectionView reloadData];
 }
 
 /*
@@ -63,20 +71,36 @@
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.restaurantsRated count];
+    return [self.restaurantsToRate count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    RestaurantCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+    Restaurant *restaurant = [self.restaurantsToRate objectAtIndex:indexPath.row];
     
     // Configure the cell
-    cell.backgroundColor = [UIColor purpleColor];
+    [cell.picLoading setHidesWhenStopped:YES];
+    [cell.picLoading startAnimating];
+    [cell setBackgroundColor:[UIColor grayColor]];
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
+    [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [cell.picLoading stopAnimating];
+        cell.imageView.image = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [cell.picLoading stopAnimating];
+        cell.imageView.image = [UIImage imageNamed:@"sample"];
+    }];
+    [requestOperation start];
+//    cell.imageView.image = [UIImage imageNamed:@"sample"];
+    cell.restaurantNameLabel.text = restaurant.name;
+    [cell.contentView sendSubviewToBack:cell.imageView];
     
     return cell;
 }
@@ -85,6 +109,23 @@
     return _restaurantsToRate ?: [[NSMutableArray alloc] init];
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.sendingImage = [[[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath] imageView] image];
+    self.index = indexPath.row;
+    
+//    [self performSegueWithIdentifier:@"restaurantDetail" sender:self];
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
+    RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
+    [detail setImage:self.sendingImage];
+    [detail setRestaurant:[self.restaurantsToRate objectAtIndex:self.index]];
+    self.sendingImage = nil;
+    self.index = -1;
+}
 
 
 #pragma mark <UICollectionViewDelegate>
