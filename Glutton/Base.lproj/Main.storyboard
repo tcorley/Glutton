@@ -59,14 +59,21 @@
                             <constraint firstItem="abF-V8-duR" firstAttribute="centerX" secondItem="ScJ-CI-vXt" secondAttribute="centerX" id="uKO-Qm-a4T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o"/>
+                    <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o">
+                        <barButtonItem key="rightBarButtonItem" title="Detail" id="dM1-08-aBJ">
+                            <connections>
+                                <action selector="cardDetail:" destination="kUE-BI-c9v" id="Za7-tB-mDL"/>
+                                <segue destination="ahh-Av-jex" kind="show" identifier="cardDetail" id="PdV-VR-0Bc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="loadingIndicator" destination="abF-V8-duR" id="aCN-WW-kjk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2755" y="-924"/>
+            <point key="canvasLocation" x="2792" y="-924"/>
         </scene>
         <!--Glutton Tab Bar Controller-->
         <scene sceneID="iVV-Yt-NTF">
@@ -92,7 +99,6 @@
         <!--Glutton Collection-->
         <scene sceneID="mh1-uw-fCE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="88r-xw-R1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="Q6h-yd-8dO" customClass="CollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KFG-C2-auL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -154,9 +160,12 @@
                             <outlet property="delegate" destination="Q6h-yd-8dO" id="MsN-LR-iRK"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Glutton Collection" id="2NE-rD-qA3"/>
+                    <navigationItem key="navigationItem" title="Glutton Collection" id="2NE-rD-qA3">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Axn-tH-QYJ"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88r-xw-R1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984" y="86"/>
         </scene>
@@ -174,12 +183,17 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j2s-a9-48O">
                                 <rect key="frame" x="0.0" y="64" width="414" height="223"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="223" id="Ro2-rg-qoZ"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1LR-Xv-gpN" appends="YES" id="VU4-jl-SAM"/>
+                                </connections>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kl8-tv-Cpq">
                                 <rect key="frame" x="0.0" y="217" width="138" height="138"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="138" id="9RX-E1-Bo4"/>
                                     <constraint firstAttribute="height" constant="138" id="SHd-3r-dgh"/>
@@ -255,7 +269,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-0s-kzl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-0s-kzl">
                                 <rect key="frame" x="95" y="566" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Wow this place is so great i can't believe i haven't been here befoire wowowowowow its just amazing how much you get for the price A++++</string>
@@ -288,7 +302,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rcQ-0s-kzl" secondAttribute="trailing" constant="63" id="Kpa-Bz-4Ge"/>
                             <constraint firstItem="b9l-3d-eb2" firstAttribute="top" secondItem="IAf-hH-fqX" secondAttribute="top" id="LXw-aP-ZBd"/>
                             <constraint firstItem="rcQ-0s-kzl" firstAttribute="leading" secondItem="spL-UV-hpK" secondAttribute="leadingMargin" constant="79" id="MNd-C3-d1a"/>
-                            <constraint firstItem="UyS-tb-z72" firstAttribute="top" secondItem="rcQ-0s-kzl" secondAttribute="bottom" constant="42" id="MmO-uJ-MVt"/>
+                            <constraint firstItem="UyS-tb-z72" firstAttribute="top" secondItem="rcQ-0s-kzl" secondAttribute="bottom" constant="-7" id="MmO-uJ-MVt"/>
                             <constraint firstItem="xov-Yx-LRh" firstAttribute="centerX" secondItem="R0R-fO-C4b" secondAttribute="centerX" id="PgD-vT-aiI"/>
                             <constraint firstItem="kl8-tv-Cpq" firstAttribute="leading" secondItem="spL-UV-hpK" secondAttribute="leading" id="TRL-OH-mpC"/>
                             <constraint firstItem="b9l-3d-eb2" firstAttribute="trailing" secondItem="spL-UV-hpK" secondAttribute="trailingMargin" id="Vgp-Ya-qZV"/>
@@ -331,6 +345,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2BD-EN-gXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1LR-Xv-gpN">
+                    <connections>
+                        <action selector="openMaps:" destination="QQD-XV-uew" id="8gs-b9-Qbi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2406" y="379"/>
         </scene>
@@ -356,7 +375,6 @@
         <!--Collection-->
         <scene sceneID="Vqu-Ao-KY2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ez-P2-0PZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1EB-tC-iIs" customClass="GluttonNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Collection" image="collection" id="IVa-i4-2nh"/>
                     <toolbarItems/>
@@ -369,6 +387,7 @@
                         <segue destination="Q6h-yd-8dO" kind="relationship" relationship="rootViewController" id="hS2-yF-U2b"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ez-P2-0PZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="358" y="-452"/>
         </scene>
@@ -391,10 +410,10 @@
             </objects>
             <point key="canvasLocation" x="358" y="-1307"/>
         </scene>
-        <!--Glutton Navigation Controller-->
+        <!--detailNav-->
         <scene sceneID="lr8-pA-geT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahh-Av-jex" customClass="GluttonNavigationController" sceneMemberID="viewController">
+                <navigationController title="detailNav" automaticallyAdjustsScrollViewInsets="NO" id="ahh-Av-jex" customClass="GluttonNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="anS-GF-HX7">
@@ -408,7 +427,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTe-TQ-tol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="379"/>
+            <point key="canvasLocation" x="1789" y="504"/>
         </scene>
     </scenes>
     <resources>
@@ -416,4 +435,7 @@
         <image name="swipe" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dMR-4q-wHa"/>
+    </inferredMetricsTieBreakers>
 </document>

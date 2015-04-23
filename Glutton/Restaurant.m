@@ -16,7 +16,8 @@
                      phone:(NSString *)phone
                   imageURL:(NSString *)imageURL
                   location:(NSDictionary *)location
-                    rating:(NSNumber *)rating
+                    rating:(NSString *)rating
+                 ratingURL:(NSString *)ratingURL
                reviewCount:(NSNumber *)reviewCount
            snippetImageURL:(NSString *)snippetImageURL
                    snippet:(NSString *)snippet {
@@ -29,6 +30,7 @@
         _imageURL = imageURL;
         _location = location;
         _rating = rating;
+        _ratingURL = ratingURL;
         _reviewCount = reviewCount;
         _snippetImageURL = snippetImageURL;
         _snippet = snippet;

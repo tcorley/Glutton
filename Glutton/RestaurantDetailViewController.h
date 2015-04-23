@@ -11,6 +11,6 @@
 
 @interface RestaurantDetailViewController : UIViewController
 @property (strong, nonatomic) Restaurant *restaurant;
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *segueIdentifierUsed;
 
 @end

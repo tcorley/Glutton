@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import "Restaurant.h"
+#import "RestaurantDetailViewController.h"
+#import "GluttonNavigationController.h"
 
 static const CGFloat ChooseRestaurantButtonHorizontalPadding = 80.f;
 static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
@@ -31,29 +33,29 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 #pragma mark - UIViewController Overrides
 
-- (NSArray *)defaultRestaurants {
-    return @[
-             [[Restaurant alloc] initWithId:@"34"
-                                       name:@"Franklin's"
-                                 categories:@[@"Barbecue"]
-                                      phone:@"5121322231"
-                                   imageURL:@"godaddy.com"
-                                   location:@{@"keys":@"somewhere"}
-                                     rating:@5
-                                reviewCount:@71
-                            snippetImageURL:@"godating.com"
-                                    snippet:@"wow. What barbeque"],
-             [[Restaurant alloc] initWithId:@"25"
-                                       name:@"Franklin's"
-                                 categories:@[@"Barbecue"]
-                                      phone:@"5121322231"
-                                   imageURL:@"godaddy.com"
-                                   location:@{@"keys":@"somewhere"}
-                                     rating:@4
-                                reviewCount:@69
-                            snippetImageURL:@"godating.com"
-                                    snippet:@"wow. What barbeque"]];
-}
+//- (NSArray *)defaultRestaurants {
+//    return @[
+//             [[Restaurant alloc] initWithId:@"34"
+//                                       name:@"Franklin's"
+//                                 categories:@[@"Barbecue"]
+//                                      phone:@"5121322231"
+//                                   imageURL:@"godaddy.com"
+//                                   location:@{@"keys":@"somewhere"}
+//                                     rating:@"5"
+//                                reviewCount:@71
+//                            snippetImageURL:@"godating.com"
+//                                    snippet:@"wow. What barbeque"],
+//             [[Restaurant alloc] initWithId:@"25"
+//                                       name:@"Franklin's"
+//                                 categories:@[@"Barbecue"]
+//                                      phone:@"5121322231"
+//                                   imageURL:@"godaddy.com"
+//                                   location:@{@"keys":@"somewhere"}
+//                                     rating:@"2.5"
+//                                reviewCount:@69
+//                            snippetImageURL:@"godating.com"
+//                                    snippet:@"wow. What barbeque"]];
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -80,6 +82,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     [self constructNopeButton];
     [self constructLikedButton];
+    
+    
     
 }
 
@@ -202,6 +206,22 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     [self.frontCardView mdc_swipe:MDCSwipeDirectionRight];
 }
 
+- (IBAction)cardDetail:(id)sender {
+    NSLog(@"In cardDetail");
+//    [self performSegueWithIdentifier:@"itemDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"IN here %@", segue.identifier);
+    if ([segue.identifier isEqualToString:@"cardDetail"]) {
+        GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
+        RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
+        [detail setRestaurant:self.currentRestaurant];
+        [detail setSegueIdentifierUsed:segue.identifier];
+    }
+
+}
+
 #pragma mark Network Calls and Objectification
 
 - (void)getBusinesses {
@@ -219,10 +239,11 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
                                                         phone:[r objectForKey:@"phone"]
                                                      imageURL:[r objectForKey:@"image_url"]
                                                      location:[r objectForKey:@"location"]
-                                                       rating:[r objectForKey:@"rating"]
+                                                       rating:[[r objectForKey:@"rating"] stringValue]
+                                                    ratingURL:[r objectForKey:@"rating_img_url_large"]
                                                   reviewCount:[r objectForKey:@"review_count"]
                                               snippetImageURL:[r objectForKey:@"snippet_image_url"]
-                                                      snippet:[r objectForKey:@"snippet"]];
+                                                      snippet:[r objectForKey:@"snippet_text"]];
             [array addObject:temp];
         }
         self.restaurants = [[NSMutableArray alloc] initWithArray:array];

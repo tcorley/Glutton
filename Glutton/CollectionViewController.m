@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSMutableArray *restaurantsToRate;
 @property (strong, nonatomic) NSMutableArray *restaurantsRated;
 @property (nonatomic) long index;
-@property (strong, nonatomic) UIImage *sendingImage;
 
 @end
 
@@ -110,21 +109,19 @@ static NSString * const reuseIdentifier = @"cell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    self.sendingImage = [[[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath] imageView] image];
+
     self.index = indexPath.row;
-    
-//    [self performSegueWithIdentifier:@"restaurantDetail" sender:self];
     
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
-    RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
-    [detail setImage:self.sendingImage];
-    [detail setRestaurant:[self.restaurantsToRate objectAtIndex:self.index]];
-    self.sendingImage = nil;
-    self.index = -1;
+    if ([segue.identifier isEqualToString:@"restaurantDetail"]) {
+        GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
+        RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
+        [detail setRestaurant:[self.restaurantsToRate objectAtIndex:self.index]];
+        [detail setSegueIdentifierUsed:segue.identifier];
+        self.index = -1;
+    }
 }
 
 

@@ -16,6 +16,7 @@
 static NSString * const kAPIHost           = @"api.yelp.com";
 static NSString * const kSearchPath        = @"/v2/search/";
 static NSString * const kBusinessPath      = @"/v2/business/";
+static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_";
 
 @implementation YelpYapper
 
@@ -50,6 +51,19 @@ static NSString * const kBusinessPath      = @"/v2/business/";
                              @"sort": @2
                              };
     return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
+}
+
++ (NSURL *)URLforRatingAsset:(NSString *)rating {
+    NSString *endPoint = [NSString stringWithFormat:@"%@.png", rating.length > 1 ? [rating stringByReplacingOccurrencesOfString:@".5" withString:@"_half"] : rating];
+    return [NSURL URLWithString:[kRatingPath stringByAppendingString:endPoint]];
+}
+
++ (NSString *)CategoryString:(NSArray *)categoryArray {
+    NSMutableString *returnString = [[NSMutableString alloc] init];
+    for (NSArray *category in categoryArray) {
+        [returnString appendFormat:@"%@, ", category[0]];
+    }
+    return [returnString substringToIndex:[returnString length]-3];
 }
 
 @end

@@ -16,7 +16,8 @@
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *imageURL;
 @property (strong, nonatomic) NSDictionary *location;
-@property (strong, nonatomic) NSNumber *rating;
+@property (strong, nonatomic) NSString *rating;
+@property (strong, nonatomic) NSString *ratingURL;
 @property (strong, nonatomic) NSNumber *reviewCount;
 @property (strong, nonatomic) NSString *snippetImageURL;
 @property (strong, nonatomic) NSString *snippet;
@@ -27,7 +28,8 @@
                      phone:(NSString *)phone
                   imageURL:(NSString *)imageURL
                   location:(NSDictionary *)location
-                    rating:(NSNumber *)rating
+                    rating:(NSString *)rating
+                 ratingURL:(NSString *)ratingURL
                reviewCount:(NSNumber *)reviewCount
            snippetImageURL:(NSString *)snippetImageURL
                    snippet:(NSString *)snippet;

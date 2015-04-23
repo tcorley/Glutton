@@ -23,6 +23,7 @@
 		3E35DB4D1AE45D9B0066EFEA /* MartelSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB451AE45D6F0066EFEA /* MartelSans-Light.ttf */; };
 		3E35DB4E1AE45D9B0066EFEA /* MartelSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB461AE45D6F0066EFEA /* MartelSans-Regular.ttf */; };
 		3E35DB4F1AE45D9B0066EFEA /* MartelSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35DB471AE45D6F0066EFEA /* MartelSans-SemiBold.ttf */; };
+		3E406D1D1AE85AA0002DB3C7 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E406D1C1AE85AA0002DB3C7 /* MapPin.m */; };
 		3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */; };
 		3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */; };
 		3E6F38841ACCD62D005739B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38831ACCD62D005739B1 /* main.m */; };
@@ -72,6 +73,8 @@
 		3E35DB451AE45D6F0066EFEA /* MartelSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Light.ttf"; sourceTree = "<group>"; };
 		3E35DB461AE45D6F0066EFEA /* MartelSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-Regular.ttf"; sourceTree = "<group>"; };
 		3E35DB471AE45D6F0066EFEA /* MartelSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MartelSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		3E406D1B1AE85AA0002DB3C7 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		3E406D1C1AE85AA0002DB3C7 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 			children = (
 				3E1614B71ADE050D00447673 /* Restaurant.h */,
 				3E1614B81ADE050D00447673 /* Restaurant.m */,
+				3E406D1B1AE85AA0002DB3C7 /* MapPin.h */,
+				3E406D1C1AE85AA0002DB3C7 /* MapPin.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
 				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
+				3E406D1D1AE85AA0002DB3C7 /* MapPin.m in Sources */,
 				3E1614B91ADE050D00447673 /* Restaurant.m in Sources */,
 				5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */,
 				3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */,

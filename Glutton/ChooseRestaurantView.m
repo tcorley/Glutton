@@ -101,7 +101,8 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 
 - (void)constructStarImageLabelView {
     UIImage *image = [UIImage imageNamed:@"trash"];
-    _starImageLabelView = [self buildImageLabelViewLeftOf:CGRectGetMinX(_reviewersImageLabelView.frame) image:image text:[_restaurant.rating stringValue]];
+    
+    _starImageLabelView = [self buildImageLabelViewLeftOf:CGRectGetMinX(_reviewersImageLabelView.frame) image:image text:_restaurant.rating];
     [_informationView addSubview:_starImageLabelView];
 }
 
