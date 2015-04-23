@@ -89,12 +89,14 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     }
     
     self.frontCardView = self.backCardView;
+    [self.frontCardView setUserInteractionEnabled:YES];
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.f;
         [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.backCardView.alpha = 1.f;
         } completion:nil];
+        [self.backCardView setUserInteractionEnabled:NO];
     }
 }
 
@@ -229,6 +231,9 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
         self.backCardView.alpha = 0.0;
         [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+        
+        // Don't let the user mess with this card!
+        [self.backCardView setUserInteractionEnabled:NO];
         
         [UIView animateWithDuration:1.0 animations:^{
             self.frontCardView.alpha = 1.0;
