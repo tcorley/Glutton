@@ -16,7 +16,6 @@
 @interface CollectionViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurantsToRate;
 @property (strong, nonatomic) NSMutableArray *restaurantsRated;
-@property (nonatomic) long index;
 
 @end
 
@@ -36,9 +35,6 @@ static NSString * const reuseIdentifier = @"cell";
     
     // Do any additional setup after loading the view.
     self.restaurantsRated = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 100; i++) {
-        [self.restaurantsRated addObject:@(i)];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,8 +45,8 @@ static NSString * const reuseIdentifier = @"cell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:nil];
-    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    self.navigationController.navigationBarHidden = YES;
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
     [self.collectionView reloadData];
@@ -96,7 +92,6 @@ static NSString * const reuseIdentifier = @"cell";
         cell.imageView.image = [UIImage imageNamed:@"sample"];
     }];
     [requestOperation start];
-//    cell.imageView.image = [UIImage imageNamed:@"sample"];
     cell.restaurantNameLabel.text = restaurant.name;
     [cell.contentView sendSubviewToBack:cell.imageView];
     
@@ -107,19 +102,13 @@ static NSString * const reuseIdentifier = @"cell";
     return _restaurantsToRate ?: [[NSMutableArray alloc] init];
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    self.index = indexPath.row;
-    
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"restaurantDetail"]) {
         GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
         RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
-        [detail setRestaurant:[self.restaurantsToRate objectAtIndex:self.index]];
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
+        [detail setRestaurant:[self.restaurantsToRate objectAtIndex:indexPath.row]];
         [detail setSegueIdentifierUsed:segue.identifier];
-        self.index = -1;
     }
 }
 
