@@ -34,9 +34,11 @@
      setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"MartelSans-Regular" size:18]} forState:UIControlStateNormal];
     [self.navigationController.navigationBar.topItem setTitle:self.restaurant.name];
     
+    //Don't show the rate button if the user hasn't swiped on it yet!
     if ([self.segueIdentifierUsed isEqualToString:@"cardDetail"]) {
-        NSLog(@"got here");
-        self.navigationController.navigationItem.leftBarButtonItem = nil;
+        self.rateButton.style = UIBarButtonItemStylePlain;
+        self.rateButton.enabled = false;
+        self.rateButton.title = nil;
     }
     
     NSDictionary *coordinate = [self.restaurant.location objectForKey:@"coordinate"];
