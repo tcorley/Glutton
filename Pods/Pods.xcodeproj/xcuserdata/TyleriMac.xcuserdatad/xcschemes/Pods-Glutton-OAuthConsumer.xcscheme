@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D8D7AC698DB7C1588DDE73E"
+               BlueprintIdentifier = "E14F214199C208A9E6F689EB"
                BuildableName = "libPods-Glutton-OAuthConsumer.a"
                BlueprintName = "Pods-Glutton-OAuthConsumer"
                ReferencedContainer = "container:Pods.xcodeproj">
