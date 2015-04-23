@@ -29,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Glutton-SLPagingView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Glutton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>440D24DE2D242E8FE28AD9FA</key>
+		<key>24DE259E0D8125CFEC29FE92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>673981B42D194432B5648763</key>
+		<key>2F6F63774196CFDDE635C4D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D3CB8FF43A0851B5FAE1648</key>
+		<key>41513C2127FFBC9A603D25FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C3BAC45010D9134E22037E6</key>
+		<key>4D41C6A075A031B914370E4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E14F214199C208A9E6F689EB</key>
+		<key>7D77704AFCC9A85CBAAF8D04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2F7EF8C1F9193B5AAC5293C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0416597B88B3D43E3D8BB34</key>
+		<key>B5D818ABAE9DA714F187752D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

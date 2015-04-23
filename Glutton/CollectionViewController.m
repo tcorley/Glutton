@@ -53,7 +53,6 @@ static NSString * const reuseIdentifier = @"cell";
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
-    NSLog(@"Found %lu restaurants", [self.restaurantsToRate count]);
     [self.collectionView reloadData];
 }
 

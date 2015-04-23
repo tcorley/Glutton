@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWy-eP-8Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="-1307"/>
+            <point key="canvasLocation" x="1078" y="-1728"/>
         </scene>
         <!--Glutton Swipe-->
         <scene sceneID="gFc-IM-T6Q">
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792" y="-924"/>
+            <point key="canvasLocation" x="1078" y="-892"/>
         </scene>
         <!--Glutton Tab Bar Controller-->
         <scene sceneID="iVV-Yt-NTF">
@@ -94,7 +94,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgk-N6-YIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176" y="-892"/>
+            <point key="canvasLocation" x="-296" y="-674"/>
         </scene>
         <!--Glutton Collection-->
         <scene sceneID="mh1-uw-fCE">
@@ -167,7 +167,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88r-xw-R1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="86"/>
+            <point key="canvasLocation" x="1078" y="-28"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="f8D-nj-YOC">
@@ -351,7 +351,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2406" y="379"/>
+            <point key="canvasLocation" x="2287" y="-674"/>
         </scene>
         <!--Swipe-->
         <scene sceneID="tOh-d4-nk9">
@@ -370,7 +370,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf6-bK-O2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2129" y="-924"/>
+            <point key="canvasLocation" x="385" y="-892"/>
         </scene>
         <!--Collection-->
         <scene sceneID="Vqu-Ao-KY2">
@@ -389,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ez-P2-0PZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-452"/>
+            <point key="canvasLocation" x="385" y="-28"/>
         </scene>
         <!--Summary-->
         <scene sceneID="JEi-8J-6OZ">
@@ -408,7 +408,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvi-xq-red" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-1307"/>
+            <point key="canvasLocation" x="385" y="-1728"/>
         </scene>
         <!--detailNav-->
         <scene sceneID="lr8-pA-geT">
@@ -427,7 +427,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTe-TQ-tol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="504"/>
+            <point key="canvasLocation" x="1653" y="-674"/>
         </scene>
     </scenes>
     <resources>

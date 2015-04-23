@@ -7,18 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SummaryViewController.h"
-#import "SwipeViewController.h"
-#import "FalseCollectionViewController.h"
-#import "CollectionViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+// Properties to pass between tabs (non-persistent)
 @property (strong, nonatomic) NSArray *toRate;
-//@property (strong, nonatomic) SummaryViewController *summary;
-//@property (strong, nonatomic) SwipeViewController *swipe;
-//@property (strong, nonatomic) FalseCollectionViewController *collection;
 
 @end
 

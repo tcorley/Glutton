@@ -9,7 +9,6 @@
 #import "SwipeViewController.h"
 #import "YelpYapper.h"
 #import <AFNetworking.h>
-#import "FalseCollectionViewController.h"
 #import "AppDelegate.h"
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import "Restaurant.h"
@@ -32,30 +31,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 #pragma mark - UIViewController Overrides
-
-//- (NSArray *)defaultRestaurants {
-//    return @[
-//             [[Restaurant alloc] initWithId:@"34"
-//                                       name:@"Franklin's"
-//                                 categories:@[@"Barbecue"]
-//                                      phone:@"5121322231"
-//                                   imageURL:@"godaddy.com"
-//                                   location:@{@"keys":@"somewhere"}
-//                                     rating:@"5"
-//                                reviewCount:@71
-//                            snippetImageURL:@"godating.com"
-//                                    snippet:@"wow. What barbeque"],
-//             [[Restaurant alloc] initWithId:@"25"
-//                                       name:@"Franklin's"
-//                                 categories:@[@"Barbecue"]
-//                                      phone:@"5121322231"
-//                                   imageURL:@"godaddy.com"
-//                                   location:@{@"keys":@"somewhere"}
-//                                     rating:@"2.5"
-//                                reviewCount:@69
-//                            snippetImageURL:@"godating.com"
-//                                    snippet:@"wow. What barbeque"]];
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -94,7 +69,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 #pragma mark - MDCSwipeToChooseDelegate Protocol Methods
 
 - (void)viewDidCancelSwipe:(UIView *)view {
-    //NSLog(@"Somthing productive here?");
 }
 
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
@@ -207,12 +181,10 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 - (IBAction)cardDetail:(id)sender {
-    NSLog(@"In cardDetail");
-//    [self performSegueWithIdentifier:@"itemDetail" sender:self];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"IN here %@", segue.identifier);
     if ([segue.identifier isEqualToString:@"cardDetail"]) {
         GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
         RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
@@ -225,7 +197,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 #pragma mark Network Calls and Objectification
 
 - (void)getBusinesses {
-//    NSLog(@"Get businesses");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -247,7 +218,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
             [array addObject:temp];
         }
         self.restaurants = [[NSMutableArray alloc] initWithArray:array];
-        NSLog(@"Done with getting businesses");
         
         [self.loadingIndicator stopAnimating];
         

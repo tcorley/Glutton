@@ -35,7 +35,6 @@
 		3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */; };
 		5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1131AD09C0A005D600B /* SummaryViewController.m */; };
 		5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1161AD09CCE005D600B /* CollectionViewController.m */; };
-		5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */; };
 		C38BFD54F4564454AFCEECE5 /* libPods-Glutton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +98,6 @@
 		5D0CB1131AD09C0A005D600B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
 		5D0CB1151AD09CCE005D600B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		5D0CB1161AD09CCE005D600B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FalseCollectionViewController.h; sourceTree = "<group>"; };
-		5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FalseCollectionViewController.m; sourceTree = "<group>"; };
 		7B594CF81E7127B5838B2783 /* Pods-Glutton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glutton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glutton/Pods-Glutton.release.xcconfig"; sourceTree = "<group>"; };
 		A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Glutton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,8 +129,6 @@
 				5D0CB1131AD09C0A005D600B /* SummaryViewController.m */,
 				3E5447341ACDFB7B0079BF46 /* SwipeViewController.h */,
 				3E5447351ACDFB7B0079BF46 /* SwipeViewController.m */,
-				5DC466331AD44BB600DC2B81 /* FalseCollectionViewController.h */,
-				5DC466341AD44BB600DC2B81 /* FalseCollectionViewController.m */,
 				5D0CB1151AD09CCE005D600B /* CollectionViewController.h */,
 				5D0CB1161AD09CCE005D600B /* CollectionViewController.m */,
 				3E35DB391AE440690066EFEA /* GluttonTabBarController.h */,
@@ -438,7 +433,6 @@
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
 				3E406D1D1AE85AA0002DB3C7 /* MapPin.m in Sources */,
 				3E1614B91ADE050D00447673 /* Restaurant.m in Sources */,
-				5DC466351AD44BB600DC2B81 /* FalseCollectionViewController.m in Sources */,
 				3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */,
 				3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */,
 				3E35DB3B1AE440690066EFEA /* GluttonTabBarController.m in Sources */,
