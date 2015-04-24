@@ -35,6 +35,9 @@
 		3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */; };
 		5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1131AD09C0A005D600B /* SummaryViewController.m */; };
 		5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1161AD09CCE005D600B /* CollectionViewController.m */; };
+		5D9DC2881AE974E300117777 /* SummaryTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DC2871AE974E300117777 /* SummaryTitleLabel.m */; };
+		5D9DC28B1AE9774300117777 /* SummaryValueLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DC28A1AE9774300117777 /* SummaryValueLabel.m */; };
+		5D9DC28E1AE97D7800117777 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DC28D1AE97D7800117777 /* SettingsViewController.m */; };
 		C38BFD54F4564454AFCEECE5 /* libPods-Glutton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +101,12 @@
 		5D0CB1131AD09C0A005D600B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
 		5D0CB1151AD09CCE005D600B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		5D0CB1161AD09CCE005D600B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5D9DC2861AE974E300117777 /* SummaryTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryTitleLabel.h; sourceTree = "<group>"; };
+		5D9DC2871AE974E300117777 /* SummaryTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryTitleLabel.m; sourceTree = "<group>"; };
+		5D9DC2891AE9774300117777 /* SummaryValueLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryValueLabel.h; sourceTree = "<group>"; };
+		5D9DC28A1AE9774300117777 /* SummaryValueLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryValueLabel.m; sourceTree = "<group>"; };
+		5D9DC28C1AE97D7800117777 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5D9DC28D1AE97D7800117777 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7B594CF81E7127B5838B2783 /* Pods-Glutton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glutton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glutton/Pods-Glutton.release.xcconfig"; sourceTree = "<group>"; };
 		A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Glutton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -137,6 +146,8 @@
 				3E35DB3D1AE455EC0066EFEA /* GluttonNavigationController.m */,
 				3E18B25C1AE5D7D50027BB60 /* RestaurantDetailViewController.h */,
 				3E18B25D1AE5D7D50027BB60 /* RestaurantDetailViewController.m */,
+				5D9DC28C1AE97D7800117777 /* SettingsViewController.h */,
+				5D9DC28D1AE97D7800117777 /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -161,6 +172,10 @@
 				3E1614B81ADE050D00447673 /* Restaurant.m */,
 				3E406D1B1AE85AA0002DB3C7 /* MapPin.h */,
 				3E406D1C1AE85AA0002DB3C7 /* MapPin.m */,
+				5D9DC2861AE974E300117777 /* SummaryTitleLabel.h */,
+				5D9DC2871AE974E300117777 /* SummaryTitleLabel.m */,
+				5D9DC2891AE9774300117777 /* SummaryValueLabel.h */,
+				5D9DC28A1AE9774300117777 /* SummaryValueLabel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -426,6 +441,7 @@
 				5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */,
 				3E18B25E1AE5D7D50027BB60 /* RestaurantDetailViewController.m in Sources */,
 				3E1614C01ADE17A200447673 /* ChooseRestaurantView.m in Sources */,
+				5D9DC28E1AE97D7800117777 /* SettingsViewController.m in Sources */,
 				3E18B25B1AE5B0660027BB60 /* RestaurantCell.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
@@ -436,7 +452,9 @@
 				3E35DB3E1AE455EC0066EFEA /* GluttonNavigationController.m in Sources */,
 				3E1614BD1ADE156700447673 /* ImageLabelView.m in Sources */,
 				3E35DB3B1AE440690066EFEA /* GluttonTabBarController.m in Sources */,
+				5D9DC28B1AE9774300117777 /* SummaryValueLabel.m in Sources */,
 				3E6F38841ACCD62D005739B1 /* main.m in Sources */,
+				5D9DC2881AE974E300117777 /* SummaryTitleLabel.m in Sources */,
 				5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
