@@ -144,7 +144,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)constructNopeButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"trash"];
+    UIImage *image = [UIImage imageNamed:@"nope"];
     button.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
                               CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding,
                               image.size.width,
@@ -164,7 +164,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)constructLikedButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"trash"];
+    UIImage *image = [UIImage imageNamed:@"like"];
     button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
     [button setImage:image forState:UIControlStateNormal];
     [button setTintColor:[UIColor colorWithRed:29.f/255.f green:245.f/255.f blue:106.f/255.f alpha:1.f]];
