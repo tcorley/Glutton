@@ -28,7 +28,7 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation {
 //    NSLog(@"In the other business method");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [[manager HTTPRequestOperationWithRequest:[self searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[manager HTTPRequestOperationWithRequest:[self searchRequest:CLLocationCoordinate2DMake(0.0, 0.0)] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",[responseObject objectForKey:@"businesses"]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
@@ -44,13 +44,18 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
     return nil;
 }
 
-+ (NSURLRequest *)searchRequest {
++ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord {
     NSDictionary *params = @{
-                             @"location": @"Austin,TX",
+                             @"ll": [NSString stringWithFormat:@"%f,%f", coord.latitude, coord.longitude],
                              @"category_filter": @"restaurants",
-                             @"sort": @2
+                             @"sort": @1
                              };
     return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
+}
+
++ (NSURLRequest *)businessRequest:(NSString *)business {
+    NSString *businessPath = [NSString stringWithFormat:@"%@%@", kBusinessPath, business];
+    return [NSURLRequest requestWithHost:kAPIHost path:businessPath];
 }
 
 + (NSURL *)URLforRatingAsset:(NSString *)rating {

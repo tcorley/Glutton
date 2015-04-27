@@ -33,4 +33,8 @@
                reviewCount:(NSNumber *)reviewCount
            snippetImageURL:(NSString *)snippetImageURL
                    snippet:(NSString *)snippet;
+
+
++ (NSDictionary *)serialize:(Restaurant *)restaurant;
++ (Restaurant *)deserialize:(NSDictionary *)r;
 @end

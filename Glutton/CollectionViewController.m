@@ -8,6 +8,7 @@
 
 #import "CollectionViewController.h"
 #import "AppDelegate.h"
+#import "Restaurant.h"
 #import "RestaurantCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import "RestaurantDetailViewController.h"
@@ -48,7 +49,9 @@ static NSString * const reuseIdentifier = @"cell";
 //    self.navigationController.navigationBarHidden = YES;
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
+//    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.restaurantsToRate = [defaults objectForKey:@"seendictionary"];
     [self.collectionView reloadData];
 }
 
@@ -76,13 +79,13 @@ static NSString * const reuseIdentifier = @"cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RestaurantCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    Restaurant *restaurant = [self.restaurantsToRate objectAtIndex:indexPath.row];
+    NSDictionary *restaurant = [self.restaurantsToRate objectAtIndex:indexPath.row];
     
     // Configure the cell
     [cell.picLoading setHidesWhenStopped:YES];
     [cell.picLoading startAnimating];
     [cell setBackgroundColor:[UIColor grayColor]];
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[restaurant objectForKey:@"imageURL"] stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
     [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
     [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [cell.picLoading stopAnimating];
@@ -92,7 +95,7 @@ static NSString * const reuseIdentifier = @"cell";
         cell.imageView.image = [UIImage imageNamed:@"sample"];
     }];
     [requestOperation start];
-    cell.restaurantNameLabel.text = restaurant.name;
+    cell.restaurantNameLabel.text = [restaurant objectForKey:@"name"];
     [cell.contentView sendSubviewToBack:cell.imageView];
     
     return cell;
@@ -107,7 +110,7 @@ static NSString * const reuseIdentifier = @"cell";
         GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
         RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
         NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
-        [detail setRestaurant:[self.restaurantsToRate objectAtIndex:indexPath.row]];
+        [detail setRestaurant:[Restaurant deserialize:[self.restaurantsToRate objectAtIndex:indexPath.row]]];
         [detail setSegueIdentifierUsed:segue.identifier];
     }
 }

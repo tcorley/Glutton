@@ -38,4 +38,35 @@
     return self;
 }
 
++ (NSDictionary *)serialize:(Restaurant *)restaurant {
+    return @{
+        @"id": restaurant.id,
+        @"name": restaurant.name,
+        @"categories": restaurant.categories,
+        @"phone": restaurant.phone,
+        @"imageURL": restaurant.imageURL,
+        @"location": restaurant.location,
+        @"rating": restaurant.rating,
+        @"ratingURL": restaurant.ratingURL,
+        @"reviewCount": restaurant.reviewCount,
+        @"snippetImageURL": restaurant.snippetImageURL,
+        @"snippet": restaurant.snippet
+             };
+}
+
++ (Restaurant *)deserialize:(NSDictionary *)r {
+    return [[Restaurant alloc]
+            initWithId:[r objectForKey:@"id"]
+            name:[r objectForKey:@"name"]
+            categories:[r objectForKey:@"categories"]
+            phone:[r objectForKey:@"phone"]
+            imageURL:[r objectForKey:@"imageURL"]
+            location:[r objectForKey:@"location"]
+            rating:[r objectForKey:@"rating"]
+            ratingURL:[r objectForKey:@"ratingURL"]
+            reviewCount:[r objectForKey:@"reviewCount"]
+            snippetImageURL:[r objectForKey:@"snippetImageURL"]
+            snippet:[r objectForKey:@"snippet"]];
+}
+
 @end

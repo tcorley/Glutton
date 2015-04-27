@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ChooseRestaurantView.h"
 #import <MDCSwipeToChoose/MDCSwipeToChooseDelegate.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SwipeViewController : UIViewController <MDCSwipeToChooseDelegate>
+@interface SwipeViewController : UIViewController <MDCSwipeToChooseDelegate, CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
 
 @property (strong, nonatomic) Restaurant *currentRestaurant;
 @property (strong, nonatomic) ChooseRestaurantView *frontCardView;

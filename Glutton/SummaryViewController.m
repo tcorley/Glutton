@@ -28,18 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://i.imgur.com/10PtRXA.jpg"]]];
-    [operation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.userPhoto.image = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        self.userPhoto.image = [UIImage imageNamed:@"sample"];
-    }];
-    [operation start];
+    
     [self.userPhoto.layer setCornerRadius:CGRectGetHeight(self.userPhoto.frame)/2];
     [self.userPhoto.layer setMasksToBounds:YES];
     [self.userPhoto.layer setBorderWidth:0.1];
-    self.levelLabel.text = @"Level: Awesome!";
+    self.levelLabel.text = @"Level: Meh?";
     [self.levelLabel setFont:[UIFont fontWithName:@"Lobster-Regular" size:24]];
     
     [self.rankBubble setBackgroundColor:[UIColor colorWithRed:0.404 green:0.227 blue:0.718 alpha:1]];
@@ -54,8 +47,8 @@
     [self.friendsLabel setText:@"Friends"];
     
     [self.rankValueLabel setText:@"7"];
-    [self.pointsValueLabel setText:@"30"];
-    [self.friendsValueLabel setText:@"0"];
+    
+    [self.friendsValueLabel setText:@"10"];
     
     
 }
@@ -70,6 +63,21 @@
     
     self.navigationController.navigationBarHidden = YES;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *title = [NSString stringWithFormat:@"Welcome, %@!", [defaults objectForKey:@"name"] ?: @"User"];
+    [self.navigationController.navigationBar.topItem setTitle:title];
+    NSString *points = [NSString stringWithFormat:@"%lu", [defaults integerForKey:@"points"]];
+    [self.pointsValueLabel setText:points];
+    NSString *url = [defaults objectForKey:@"userimage"] ?: @"http://i.imgur.com/10PtRXA.jpg";
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [operation setResponseSerializer:[AFImageResponseSerializer serializer]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.userPhoto.image = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        self.userPhoto.image = [UIImage imageNamed:@"sample"];
+    }];
+    [operation start];
     
 }
 

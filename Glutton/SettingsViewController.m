@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface SettingsViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *yelpName;
 
 @end
 
@@ -18,11 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [defaults objectForKey:@"userid"];
+    if (userid) {
+        [self.yelpName setTitle:userid forState:UIControlStateNormal];
+        self.yelpName.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,6 +63,13 @@
                              [manager GET:[NSString stringWithFormat:@"http://tcorley.info:5000/user/%@", userid.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                  NSLog(@"%@", responseObject);
                                  [self notifyWithResult:@"Success" andMessage:[NSString stringWithFormat:@"Thanks, %@", [responseObject objectForKey:@"name" ]]];
+                                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                 [defaults setObject:[responseObject objectForKey:@"name"] forKey:@"name"];
+                                 [defaults setObject:[responseObject objectForKey:@"userid"] forKey:@"userid"];
+                                 [defaults setObject:[responseObject objectForKey:@"imageURL"] forKey:@"userimage"];
+                                 [defaults synchronize];
+                                 [self.yelpName setTitle:[responseObject objectForKey:@"userid"] forState:UIControlStateNormal];
+                                 self.yelpName.enabled = NO;
                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                  [self notifyWithResult:@"Whoops💩" andMessage:@"Couldn't find that user id. Check to make sure that you entered it correctly!"];
                              }];
@@ -106,6 +115,23 @@
         [alert dismissViewControllerAnimated:YES completion:nil];
     }];
     [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)resetDefaults:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete NSUserDefaults?" message:@"Are you sure you want to do this? Data will be lost 5-ever!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *doit = [UIAlertAction actionWithTitle:@"Take 'em to church" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [self notifyWithResult:@"NSUserDefaults are gone..." andMessage:@"Wow. Such destruction. Very heavy-handed💅🏽. I clean now."];
+        exit(0);
+    }];
+    UIAlertAction *nah = [UIAlertAction actionWithTitle:@"I know better than this" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES
+                                  completion:nil];
+    }];
+    [alert addAction:doit];
+    [alert addAction:nah];
     [self presentViewController:alert animated:YES completion:nil];
 }
 

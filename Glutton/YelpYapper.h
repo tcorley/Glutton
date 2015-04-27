@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 // Paths to yelp star assets
 #define YELP_RATING_5 @"stars_large_5.png"
@@ -19,12 +20,12 @@
 #define YELP_RATING_1_HALF @"stars_large_1_half.png"
 #define YELP_RATING_1 @"stars_large_1.png"
 
-@interface YelpYapper : NSObject
+@interface YelpYapper : NSObject 
 
 + (NSArray *)getBusinesses;
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation;
 + (NSArray *)getBusinessDetail:(NSArray *)ids;
-+ (NSURLRequest *)searchRequest;
++ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord;
 + (NSURL *)URLforRatingAsset:(NSString *)rating;
 + (NSString *)CategoryString:(NSArray *)categoryArray;
 

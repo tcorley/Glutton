@@ -21,6 +21,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 @interface SwipeViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (nonatomic) CLLocationCoordinate2D currentLocation;
 
 @end
 
@@ -43,23 +44,35 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self->locationManager = [[CLLocationManager alloc] init];
+    self->locationManager.delegate = self;
+    self->locationManager.distanceFilter = kCLDistanceFilterNone;
+    self->locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self->locationManager startUpdatingLocation];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [self->locationManager requestWhenInUseAuthorization];
+    }
+    
+    self.currentLocation = [self->locationManager location].coordinate;
+    
+    [self->locationManager stopUpdatingLocation];
+    
+    NSLog(@"Location gotten: Lat:%f Lon:%f", self.currentLocation.latitude, self.currentLocation.longitude);
     
     [self.loadingIndicator setHidesWhenStopped:YES];
     [self.loadingIndicator startAnimating];
     
-//    _restaurants = [[self defaultRestaurants] mutableCopy];
-    
     [self getBusinesses];
-    
-    
 
-    
     [self constructNopeButton];
     [self constructLikedButton];
     
     
-    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"%@", [locations lastObject]);
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -72,6 +85,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (direction == MDCSwipeDirectionLeft) {
         
     } else {
@@ -86,7 +100,25 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
             long badgeValue = [[collectionTab badgeValue] integerValue];
             [collectionTab setBadgeValue:[NSString stringWithFormat:@"%lu", badgeValue+1]];
         }
+        NSMutableArray *restaruantDict = [[defaults objectForKey:@"seendictionary"] mutableCopy];
+        // Have to do this for NSUserDefaults 🙍🏾
+        if (restaruantDict) {
+            [restaruantDict addObject:[Restaurant serialize:self.currentRestaurant]];
+        } else {
+            restaruantDict = [NSMutableArray arrayWithObject:[Restaurant serialize:self.currentRestaurant]];
+        }
+        [defaults setObject:restaruantDict forKey:@"seendictionary"];
     }
+    
+    // potential issue here
+    NSMutableArray *seen = [NSMutableArray arrayWithArray:[defaults objectForKey:@"swiped"]];
+    if (seen) {
+        [seen addObject:self.currentRestaurant.id];
+    } else {
+        seen = [NSMutableArray arrayWithObject:self.currentRestaurant.id];
+    }
+    [defaults setObject:seen forKey:@"swiped"];
+    [defaults synchronize];
     
     self.frontCardView = self.backCardView;
     [self.frontCardView setUserInteractionEnabled:YES];
@@ -201,23 +233,27 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 - (void)getBusinesses {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest:self.currentLocation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *alreadySwiped = [defaults objectForKey:@"swiped"];
         
         for(NSDictionary *r in [responseObject objectForKey:@"businesses"]) {
-            Restaurant *temp = [[Restaurant alloc] initWithId:[r objectForKey:@"id"]
-                                                         name:[r objectForKey:@"name"]
-                                                   categories:[r objectForKey:@"categories"]
-                                                        phone:[r objectForKey:@"phone"]
-                                                     imageURL:[r objectForKey:@"image_url"]
-                                                     location:[r objectForKey:@"location"]
-                                                       rating:[[r objectForKey:@"rating"] stringValue]
-                                                    ratingURL:[r objectForKey:@"rating_img_url_large"]
-                                                  reviewCount:[r objectForKey:@"review_count"]
-                                              snippetImageURL:[r objectForKey:@"snippet_image_url"]
-                                                      snippet:[r objectForKey:@"snippet_text"]];
-            [array addObject:temp];
+            if (!alreadySwiped || [alreadySwiped indexOfObject:[r objectForKey:@"id"]] == NSNotFound) {
+                Restaurant *temp = [[Restaurant alloc] initWithId:[r objectForKey:@"id"]
+                                                             name:[r objectForKey:@"name"]
+                                                       categories:[r objectForKey:@"categories"]
+                                                            phone:[r objectForKey:@"phone"]
+                                                         imageURL:[r objectForKey:@"image_url"]
+                                                         location:[r objectForKey:@"location"]
+                                                           rating:[[r objectForKey:@"rating"] stringValue]
+                                                        ratingURL:[r objectForKey:@"rating_img_url_large"]
+                                                      reviewCount:[r objectForKey:@"review_count"]
+                                                  snippetImageURL:[r objectForKey:@"snippet_image_url"]
+                                                          snippet:[r objectForKey:@"snippet_text"]];
+                [array addObject:temp];
+            }
         }
         self.restaurants = [[NSMutableArray alloc] initWithArray:array];
         
