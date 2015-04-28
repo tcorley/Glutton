@@ -60,7 +60,7 @@
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction *action) {
                              UITextField *userid = alert.textFields.firstObject;
-                             self.loader = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                             self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                              self.loader.labelText = @"Sit tight...";
                              AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
                              manager.responseSerializer = [AFJSONResponseSerializer serializer];

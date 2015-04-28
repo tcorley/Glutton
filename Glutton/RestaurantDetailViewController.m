@@ -179,7 +179,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         return;
     }
     //display an alertview with a loading indicator
-    self.loader = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     self.loader.labelText = @"Verifying Review...";
 
     //make the network call to imbibery

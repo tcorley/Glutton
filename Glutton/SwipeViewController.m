@@ -14,13 +14,14 @@
 #import "Restaurant.h"
 #import "RestaurantDetailViewController.h"
 #import "GluttonNavigationController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 static const CGFloat ChooseRestaurantButtonHorizontalPadding = 80.f;
 static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 @interface SwipeViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurants;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (strong, nonatomic) MBProgressHUD *loader;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (nonatomic) double furthestDistanceOfLastRestaurant;
 
@@ -57,8 +58,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     NSLog(@"Location gotten: Lat:%f Lon:%f", self.currentLocation.latitude, self.currentLocation.longitude);
     
-    [self.loadingIndicator setHidesWhenStopped:YES];
-    [self.loadingIndicator startAnimating];
+    self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view  animated:YES];
+    self.loader.labelText = @"Downloading food brb";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *potentialUnswiped = [defaults objectForKey:@"unswiped"];
@@ -67,6 +68,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         for (NSDictionary *r in potentialUnswiped) {
             [self.restaurants addObject:[Restaurant deserialize:r]];
         }
+        [self.loader hide:YES];
         [self presentInitialCards];
     } else {
         [self getBusinesses];
@@ -168,7 +170,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     ChooseRestaurantView *restaurantView = [[ChooseRestaurantView alloc] initWithFrame:frame restaurant:self.restaurants[0] options:options];
     [self.restaurants removeObjectAtIndex:0];
-    [self saveState];
     return restaurantView;
     
 }
@@ -301,7 +302,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         if ([[responseObject objectForKey:@"total"] unsignedLongValue] > [self.restaurants count]) {
             [self getRestOfBusinesses:[self.restaurants count]];
         } else {
-            [self.loadingIndicator stopAnimating];
             [self saveState];
             [self presentInitialCards];
             
@@ -309,7 +309,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.loadingIndicator stopAnimating];
+        [self.loader hide:YES];
         //UIAlertView to let them know that something happened with the network connection...
     }] start];
 }
@@ -346,14 +346,14 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         self.furthestDistanceOfLastRestaurant = [[[[responseObject objectForKey:@"businesses"] lastObject] objectForKey:@"distance"] floatValue];
         NSLog(@"Furthest restaurant is %f meters away from current location", self.furthestDistanceOfLastRestaurant);
         
-        [self.loadingIndicator stopAnimating];
+        [self.loader hide:YES];
         
         [self saveState];
         [self presentInitialCards];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.loadingIndicator stopAnimating];
+        [self.loader hide:YES];
         [self saveState];
         //UIAlertView to let them know that something happened with the network connection...
     }] start];

@@ -402,16 +402,7 @@
                     <view key="view" contentMode="scaleToFill" id="ScJ-CI-vXt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="abF-V8-duR">
-                                <rect key="frame" x="197" y="358" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="abF-V8-duR" firstAttribute="centerY" secondItem="ScJ-CI-vXt" secondAttribute="centerY" id="79G-jy-gOu"/>
-                            <constraint firstItem="abF-V8-duR" firstAttribute="centerX" secondItem="ScJ-CI-vXt" secondAttribute="centerX" id="uKO-Qm-a4T"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o">
                         <barButtonItem key="rightBarButtonItem" title="Detail" id="dM1-08-aBJ">
@@ -421,9 +412,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="loadingIndicator" destination="abF-V8-duR" id="aCN-WW-kjk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -819,6 +807,6 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dMR-4q-wHa"/>
+        <segue reference="PdV-VR-0Bc"/>
     </inferredMetricsTieBreakers>
 </document>
