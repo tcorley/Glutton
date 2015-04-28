@@ -42,14 +42,9 @@
     [self.friendBubble setBackgroundColor:[UIColor colorWithRed:1 green:0.341 blue:0.133 alpha:1]];
     [self.friendBubble.layer setCornerRadius:CGRectGetHeight(self.friendBubble.frame)/2];
     
-    [self.rankLabel setText:@"Rank"];
+    [self.rankLabel setText:@"Swiped"];
     [self.pointsLabel setText:@"Glutton\nPoints"];
-    [self.friendsLabel setText:@"Friends"];
-    
-    [self.rankValueLabel setText:@"7"];
-    
-    [self.friendsValueLabel setText:@"10"];
-    
+    [self.friendsLabel setText:@"Rated"];
     
 }
 
@@ -65,6 +60,8 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.rankValueLabel.text = [NSString stringWithFormat:@"%lu",[defaults integerForKey:@"swipeCount"]];
+    self.friendsValueLabel.text = [NSString stringWithFormat:@"%lu", [defaults integerForKey:@"rated"]];
     NSString *title = [NSString stringWithFormat:@"Welcome, %@!", [defaults objectForKey:@"name"] ?: @"User"];
     [self.navigationController.navigationBar.topItem setTitle:title];
     NSString *points = [NSString stringWithFormat:@"%lu", [defaults integerForKey:@"points"]];

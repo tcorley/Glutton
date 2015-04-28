@@ -195,6 +195,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         if ([responseObject containsObject:@"review"]) {
             NSUInteger pointsForReview = [[responseObject objectForKey:@"review"] length] / 2;
             [self notifyWithResult:@"Success ✅" andMessage:[NSString stringWithFormat:@"Successful Review! You'll get %lu points for this review:\n%@", pointsForReview, [responseObject objectForKey:@"review"]] withButtonTitle:@"Okay!"];
+            [defaults setInteger:[defaults integerForKey:@"rated"] + 1 forKey:@"rated"];
             [defaults setInteger:[defaults integerForKey:@"points"] + pointsForReview forKey:@"points"];
         } else {
             [self notifyWithResult:@"Oops! 😲" andMessage:@"Couldn't find your post... could you check and make sure it was submitted correctly on Yelp and try again?" withButtonTitle:@"Yea, I guess so."];

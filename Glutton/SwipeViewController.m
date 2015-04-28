@@ -100,6 +100,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[defaults integerForKey:@"swipeCount"] + 1 forKey:@"swipeCount"];
     if (direction == MDCSwipeDirectionLeft) {
         
     } else {
