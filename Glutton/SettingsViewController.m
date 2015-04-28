@@ -8,9 +8,11 @@
 
 #import "SettingsViewController.h"
 #import <AFNetworking/AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *yelpName;
+@property (strong, nonatomic) MBProgressHUD *loader;
 
 @end
 
@@ -58,6 +60,8 @@
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction *action) {
                              UITextField *userid = alert.textFields.firstObject;
+                             self.loader = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                             self.loader.labelText = @"Sit tight...";
                              AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
                              manager.responseSerializer = [AFJSONResponseSerializer serializer];
                              [manager GET:[NSString stringWithFormat:@"http://tcorley.info:5000/user/%@", userid.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -70,8 +74,10 @@
                                  [defaults synchronize];
                                  [self.yelpName setTitle:[responseObject objectForKey:@"userid"] forState:UIControlStateNormal];
                                  self.yelpName.enabled = NO;
+                                 [self.loader hide:YES];
                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                  [self notifyWithResult:@"Whoops💩" andMessage:@"Couldn't find that user id. Check to make sure that you entered it correctly!"];
+                                 [self.loader hide:YES];
                              }];
                              [[NSNotificationCenter defaultCenter] removeObserver:self
                                                                              name:UITextFieldTextDidChangeNotification
@@ -94,6 +100,8 @@
     [alert addAction:no];
     
     go.enabled = NO;
+    
+    
     
     //set variable to check in NSUserDefaults
     [self presentViewController:alert animated:YES completion:nil];
@@ -125,6 +133,27 @@
         [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
         [self notifyWithResult:@"NSUserDefaults are gone..." andMessage:@"Wow. Such destruction. Very heavy-handed💅🏽. I clean now."];
         exit(0);
+    }];
+    UIAlertAction *nah = [UIAlertAction actionWithTitle:@"I know better than this" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES
+                                  completion:nil];
+    }];
+    [alert addAction:doit];
+    [alert addAction:nah];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)resetUserInfo:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete User Info?" message:@"Are you sure you want to do this?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *doit = [UIAlertAction actionWithTitle:@"My body is ready" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"name"];
+        [defaults removeObjectForKey:@"imageURL"];
+        [defaults removeObjectForKey:@"userid"];
+        [defaults synchronize];
+        [self.yelpName setTitle:@"Add" forState:UIControlStateNormal];
+        self.yelpName.enabled = YES;
+        [self notifyWithResult:@"The deed..." andMessage:@"...is done"];
     }];
     UIAlertAction *nah = [UIAlertAction actionWithTitle:@"I know better than this" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [alert dismissViewControllerAnimated:YES
