@@ -52,7 +52,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     NSDictionary *coordinate = [self.restaurant.location objectForKey:@"coordinate"];
     self.coord = CLLocationCoordinate2DMake([[coordinate objectForKey:@"latitude"] floatValue], [[coordinate objectForKey:@"longitude"] floatValue]);
 
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.008, 0.008);
     MKCoordinateRegion region = {self.coord, span};
     [self.map setRegion:region];
     [self.map addAnnotation:[[MapPin alloc] initWithCoordinates:self.coord
