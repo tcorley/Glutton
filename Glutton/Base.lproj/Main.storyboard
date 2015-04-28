@@ -405,7 +405,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o">
                         <barButtonItem key="backBarButtonItem" title=" " id="jOo-pn-0bL"/>
-                        <barButtonItem key="rightBarButtonItem" title="Detail" id="dM1-08-aBJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="dM1-08-aBJ">
                             <connections>
                                 <action selector="cardDetail:" destination="kUE-BI-c9v" id="Za7-tB-mDL"/>
                                 <segue destination="ahh-Av-jex" kind="show" identifier="cardDetail" id="PdV-VR-0Bc"/>
@@ -553,15 +553,31 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xov-Yx-LRh" customClass="StyledLabel">
+                                <rect key="frame" x="333" y="326" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-uo-gwJ">
                                 <rect key="frame" x="147" y="325" width="120" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="tvd-H3-842"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Qx-4Ys">
-                                <rect key="frame" x="312" y="72" width="92" height="30"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-hk-p7e">
+                                <rect key="frame" x="0.0" y="363" width="414" height="324"/>
+                                <connections>
+                                    <segue destination="a18-BS-ppF" kind="embed" identifier="embedseg" id="QHN-as-xJg"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Qx-4Ys">
+                                <rect key="frame" x="305" y="72" width="134" height="45"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1UD-b8-qv2"/>
+                                    <constraint firstAttribute="width" constant="134" id="Nmc-Mb-YzS"/>
+                                </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Verify Review">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -576,18 +592,6 @@
                                     <action selector="verifyUserReview:" destination="QQD-XV-uew" eventType="touchUpInside" id="7iQ-lc-xiW"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-hk-p7e">
-                                <rect key="frame" x="0.0" y="363" width="414" height="324"/>
-                                <connections>
-                                    <segue destination="a18-BS-ppF" kind="embed" identifier="embedseg" id="QHN-as-xJg"/>
-                                </connections>
-                            </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xov-Yx-LRh" customClass="StyledLabel">
-                                <rect key="frame" x="333" y="326" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -600,8 +604,10 @@
                             <constraint firstItem="xov-Yx-LRh" firstAttribute="centerX" secondItem="R0R-fO-C4b" secondAttribute="centerX" id="DRc-qk-oD6"/>
                             <constraint firstItem="C9u-uo-gwJ" firstAttribute="leading" secondItem="kl8-tv-Cpq" secondAttribute="trailing" constant="9" id="F9T-A9-enl"/>
                             <constraint firstItem="xov-Yx-LRh" firstAttribute="bottom" secondItem="C9u-uo-gwJ" secondAttribute="bottom" id="RcL-cP-0jQ"/>
+                            <constraint firstItem="fLV-Qx-4Ys" firstAttribute="trailing" secondItem="R0R-fO-C4b" secondAttribute="trailing" constant="35" id="Uy5-g9-Fqm"/>
                             <constraint firstItem="eV0-hk-p7e" firstAttribute="bottom" secondItem="UyS-tb-z72" secondAttribute="top" id="WSD-xs-WXb"/>
                             <constraint firstItem="eV0-hk-p7e" firstAttribute="trailing" secondItem="j2s-a9-48O" secondAttribute="trailing" id="YcL-dj-KQH"/>
+                            <constraint firstItem="fLV-Qx-4Ys" firstAttribute="top" secondItem="SFZ-JK-mTD" secondAttribute="bottom" constant="8" symbolic="YES" id="cjd-SE-dkB"/>
                             <constraint firstItem="tIX-05-cTk" firstAttribute="top" secondItem="j2s-a9-48O" secondAttribute="bottom" constant="3" id="dzu-2J-LwK"/>
                             <constraint firstItem="kl8-tv-Cpq" firstAttribute="top" secondItem="SFZ-JK-mTD" secondAttribute="bottom" constant="153" id="foQ-NF-69b"/>
                             <constraint firstItem="R0R-fO-C4b" firstAttribute="leading" secondItem="tIX-05-cTk" secondAttribute="trailing" constant="65" id="gIm-aP-eLZ"/>
@@ -665,7 +671,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0Q-QL-g9h" customClass="StyledLabel">
-                                                    <rect key="frame" x="204" y="11" width="202" height="21"/>
+                                                    <rect key="frame" x="146" y="11" width="260" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

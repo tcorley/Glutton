@@ -33,6 +33,7 @@
     
     //add the dynamic information
     [self.categoryLabel setText:[YelpYapper CategoryString:self.restaurant.categories]];
+    [self.categoryLabel setAdjustsFontSizeToFitWidth:YES];
     [self.phoneNumberLabel setTitle:[YelpYapper styledPhoneNumber:self.restaurant.phone] forState:UIControlStateNormal];
     [self.addressLabel setText:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]];
     [self.phoneNumberLabel.titleLabel setFont:[UIFont fontWithName:@"MartelSans-Regular" size:14]];

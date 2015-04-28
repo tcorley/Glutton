@@ -145,6 +145,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         } completion:nil];
         [self.backCardView setUserInteractionEnabled:NO];
     }
+    
 }
 
 #pragma mark - Internal Methods

@@ -78,6 +78,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     self.reviewCount.text = [self.restaurant.reviewCount stringValue];
     [self.reviewCountLabel setText:@"Rating"];
     [self.ratingLabel setText:@"Review Count"];
+    [self.verifyButton.titleLabel setFont:[UIFont fontWithName:@"MartelSans-Light" size:20]];
     
 }
 
@@ -187,7 +188,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager POST:imbiberyPath parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@", responseObject);
-        if ([responseObject containsObject:@"review"]) {
+        if ([responseObject objectForKey:@"review"]) {
             NSUInteger pointsForReview = [[responseObject objectForKey:@"review"] length] / 2;
             [self notifyWithResult:@"Success ✅" andMessage:[NSString stringWithFormat:@"Successful Review! You'll get %lu points for this review:\n%@", pointsForReview, [responseObject objectForKey:@"review"]] withButtonTitle:@"Okay!"];
             [defaults setInteger:[defaults integerForKey:@"rated"] + 1 forKey:@"rated"];
