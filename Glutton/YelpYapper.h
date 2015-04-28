@@ -28,5 +28,6 @@
 + (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord withOffset:(long)offset;
 + (NSURL *)URLforRatingAsset:(NSString *)rating;
 + (NSString *)CategoryString:(NSArray *)categoryArray;
++ (NSString *)styledPhoneNumber:(NSString *)phoneNumber;
 
 @end

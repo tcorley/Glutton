@@ -67,11 +67,22 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
 }
 
 + (NSString *)CategoryString:(NSArray *)categoryArray {
-    NSMutableString *returnString = [[NSMutableString alloc] init];
-    for (NSArray *category in categoryArray) {
-        [returnString appendFormat:@"%@, ", category[0]];
+    
+    if ([categoryArray count] == 0) {
+        return @"No Categories :(";
+    } else if ([categoryArray count] == 1) {
+        return [categoryArray firstObject];
+    } else {
+        NSMutableString *returnString = [[NSMutableString alloc] init];
+        for (NSArray *category in categoryArray) {
+            [returnString appendFormat:@"%@, ", category[0]];
+        }
+        return [returnString substringToIndex:[returnString length]-2];
     }
-    return [returnString substringToIndex:[returnString length]-3];
+}
+
++ (NSString *)styledPhoneNumber:(NSString *)phoneNumber {
+    return [NSString stringWithFormat:@"(%@)%@-%@", [phoneNumber substringToIndex:3], [phoneNumber substringWithRange:NSMakeRange(3, 3)], [phoneNumber substringFromIndex:6]];
 }
 
 @end

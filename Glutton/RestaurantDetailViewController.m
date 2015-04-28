@@ -13,20 +13,21 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "DetailEmbedTableViewController.h"
+#import "StyledLabel.h"
 
-@interface RestaurantDetailViewController () <MBProgressHUDDelegate>
+@interface RestaurantDetailViewController () <MBProgressHUDDelegate, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImage;
 @property (weak, nonatomic) IBOutlet UIImageView *ratingImage;
 @property (weak, nonatomic) IBOutlet UILabel *reviewCount;
-@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-@property (weak, nonatomic) IBOutlet UIButton *phoneNumber;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UITextView *snippetText;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rateButton;
 @property (weak, nonatomic) IBOutlet UIButton *verifyButton;
 @property (nonatomic) CLLocationCoordinate2D coord;
 @property (strong, nonatomic) MBProgressHUD *loader;
+@property (weak, nonatomic) IBOutlet StyledLabel *reviewCountLabel;
+@property (weak, nonatomic) IBOutlet StyledLabel *ratingLabel;
+
 @end
 
 @implementation RestaurantDetailViewController
@@ -73,20 +74,19 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         
     }];
     [requestOperation start];
-    
-    self.categoryLabel.text = [YelpYapper CategoryString:self.restaurant.categories];
+
     self.reviewCount.text = [self.restaurant.reviewCount stringValue];
-    [self.phoneNumber setTitle:self.restaurant.phone forState:UIControlStateNormal];
-    [self.addressLabel setText:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]];
-    [self.snippetText setText:self.restaurant.snippet];
-    [self.snippetText setEditable:NO];
-    [self.snippetText setUserInteractionEnabled:NO];
+    [self.reviewCountLabel setText:@"Rating"];
+    [self.ratingLabel setText:@"Review Count"];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    NSLog(@"viewwillappear called");
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"embedseg"]) {
+        DetailEmbedTableViewController *embed = (DetailEmbedTableViewController *)[segue destinationViewController];
+        [embed setRestaurant:self.restaurant];
+    }
 }
 
 - (IBAction)goToYelp:(id)sender {
@@ -130,11 +130,6 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     
     
     
-}
-
-- (IBAction)callBiz:(id)sender {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", self.restaurant.phone]];
-    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)openMaps:(id)sender {
