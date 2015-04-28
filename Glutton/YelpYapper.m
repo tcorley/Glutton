@@ -28,7 +28,7 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation {
 //    NSLog(@"In the other business method");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [[manager HTTPRequestOperationWithRequest:[self searchRequest:CLLocationCoordinate2DMake(0.0, 0.0)] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[manager HTTPRequestOperationWithRequest:[self searchRequest:CLLocationCoordinate2DMake(0.0, 0.0) withOffset:0] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",[responseObject objectForKey:@"businesses"]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
@@ -44,13 +44,16 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
     return nil;
 }
 
-+ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord {
-    NSDictionary *params = @{
-                             @"ll": [NSString stringWithFormat:@"%f,%f", coord.latitude, coord.longitude],
-                             @"category_filter": @"restaurants",
-                             @"sort": @1
-                             };
-    return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
++ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord withOffset:(long)offset {
+
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:[NSString stringWithFormat:@"%f,%f", coord.latitude, coord.longitude] forKey:@"ll"];
+    [params setObject:@"restaurants" forKey:@"category_filter"];
+    [params setObject:@1 forKey:@"sort"];
+    if (offset > 0) {
+        [params setObject:[NSNumber numberWithLong:offset] forKey:@"offset"];
+    }
+    return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:[NSDictionary dictionaryWithDictionary:params]];
 }
 
 + (NSURLRequest *)businessRequest:(NSString *)business {

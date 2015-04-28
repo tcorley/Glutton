@@ -51,8 +51,10 @@ static NSString * const reuseIdentifier = @"cell";
     
 //    self.restaurantsToRate = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).toRate mutableCopy];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.restaurantsToRate = [defaults objectForKey:@"seendictionary"];
-    [self.collectionView reloadData];
+    if (![self.restaurantsToRate isEqualToArray:[defaults objectForKey:@"seendictionary"]]) {
+        self.restaurantsToRate = [defaults objectForKey:@"seendictionary"];
+        [self.collectionView reloadData];
+    }
 }
 
 /*

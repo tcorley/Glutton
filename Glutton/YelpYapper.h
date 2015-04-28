@@ -25,7 +25,7 @@
 + (NSArray *)getBusinesses;
 + (NSArray *)getBusinesses:(float)offsetFromCurrentLocation;
 + (NSArray *)getBusinessDetail:(NSArray *)ids;
-+ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord;
++ (NSURLRequest *)searchRequest:(CLLocationCoordinate2D)coord withOffset:(long)offset;
 + (NSURL *)URLforRatingAsset:(NSString *)rating;
 + (NSString *)CategoryString:(NSArray *)categoryArray;
 

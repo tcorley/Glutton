@@ -68,6 +68,7 @@
     [requestOperation start];
     
     self.categoryLabel.text = [YelpYapper CategoryString:self.restaurant.categories];
+    self.reviewCount.text = [self.restaurant.reviewCount stringValue];
     [self.phoneNumber setTitle:self.restaurant.phone forState:UIControlStateNormal];
     [self.addressLabel setText:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]];
     [self.snippetText setText:self.restaurant.snippet];

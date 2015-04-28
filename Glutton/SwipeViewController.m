@@ -22,14 +22,11 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
+@property (nonatomic) double furthestDistanceOfLastRestaurant;
 
 @end
 
 @implementation SwipeViewController
-
-- (NSMutableArray *)restaurants {
-    return _restaurants ?: [[NSMutableArray alloc] init];
-}
 
 #pragma mark - UIViewController Overrides
 
@@ -63,12 +60,27 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     [self.loadingIndicator setHidesWhenStopped:YES];
     [self.loadingIndicator startAnimating];
     
-    [self getBusinesses];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *potentialUnswiped = [defaults objectForKey:@"unswiped"];
+    if (potentialUnswiped) {
+        self.restaurants = [[NSMutableArray alloc] init];
+        for (NSDictionary *r in potentialUnswiped) {
+            [self.restaurants addObject:[Restaurant deserialize:r]];
+        }
+        [self presentInitialCards];
+    } else {
+        [self getBusinesses];
+    }
 
     [self constructNopeButton];
     [self constructLikedButton];
     
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"view is dissapearing");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -156,6 +168,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     ChooseRestaurantView *restaurantView = [[ChooseRestaurantView alloc] initWithFrame:frame restaurant:self.restaurants[0] options:options];
     [self.restaurants removeObjectAtIndex:0];
+    [self saveState];
     return restaurantView;
     
 }
@@ -230,10 +243,36 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 #pragma mark Network Calls and Objectification
 
+- (void)presentInitialCards {
+    self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
+    self.frontCardView.alpha = 0.0;
+    [self.view addSubview:self.frontCardView];
+    
+    
+    self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
+    self.backCardView.alpha = 0.0;
+    [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+    
+    // Don't let the user mess with this card!
+    [self.backCardView setUserInteractionEnabled:NO];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.frontCardView.alpha = 1.0;
+    }];
+    
+    [UIView animateWithDuration:1.0
+                          delay:1.0
+                        options:0
+                     animations:^{
+                         self.backCardView.alpha = 1.0;
+                     }
+                     completion:nil];
+}
+
 - (void)getBusinesses {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest:self.currentLocation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest:self.currentLocation withOffset:0] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray *array = [[NSMutableArray alloc] init];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -257,37 +296,82 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         }
         self.restaurants = [[NSMutableArray alloc] initWithArray:array];
         
-        [self.loadingIndicator stopAnimating];
-        
-        self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
-        self.frontCardView.alpha = 0.0;
-        [self.view addSubview:self.frontCardView];
         
         
-        self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
-        self.backCardView.alpha = 0.0;
-        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
-        
-        // Don't let the user mess with this card!
-        [self.backCardView setUserInteractionEnabled:NO];
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            self.frontCardView.alpha = 1.0;
-        }];
-        
-        [UIView animateWithDuration:1.0
-                              delay:1.0
-                            options:0
-                         animations:^{
-                             self.backCardView.alpha = 1.0;
-                         }
-                         completion:nil];
+        if ([[responseObject objectForKey:@"total"] unsignedLongValue] > [self.restaurants count]) {
+            [self getRestOfBusinesses:[self.restaurants count]];
+        } else {
+            [self.loadingIndicator stopAnimating];
+            [self saveState];
+            [self presentInitialCards];
+            
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         [self.loadingIndicator stopAnimating];
         //UIAlertView to let them know that something happened with the network connection...
     }] start];
+}
+
+- (void)getRestOfBusinesses:(long)offset {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [[manager HTTPRequestOperationWithRequest:[YelpYapper searchRequest:self.currentLocation withOffset:offset] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%lu more restaurants found!", [[responseObject objectForKey:@"businesses"] count]);
+        
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *alreadySwiped = [defaults objectForKey:@"swiped"];
+        
+        for(NSDictionary *r in [responseObject objectForKey:@"businesses"]) {
+            if (!alreadySwiped || [alreadySwiped indexOfObject:[r objectForKey:@"id"]] == NSNotFound) {
+                Restaurant *temp = [[Restaurant alloc] initWithId:[r objectForKey:@"id"]
+                                                             name:[r objectForKey:@"name"]
+                                                       categories:[r objectForKey:@"categories"]
+                                                            phone:[r objectForKey:@"phone"]
+                                                         imageURL:[r objectForKey:@"image_url"]
+                                                         location:[r objectForKey:@"location"]
+                                                           rating:[[r objectForKey:@"rating"] stringValue]
+                                                        ratingURL:[r objectForKey:@"rating_img_url_large"]
+                                                      reviewCount:[r objectForKey:@"review_count"]
+                                                  snippetImageURL:[r objectForKey:@"snippet_image_url"]
+                                                          snippet:[r objectForKey:@"snippet_text"]];
+                [array addObject:temp];
+            }
+        }
+        self.restaurants = [[self.restaurants arrayByAddingObjectsFromArray:[array copy]] mutableCopy];
+        
+        self.furthestDistanceOfLastRestaurant = [[[[responseObject objectForKey:@"businesses"] lastObject] objectForKey:@"distance"] floatValue];
+        NSLog(@"Furthest restaurant is %f meters away from current location", self.furthestDistanceOfLastRestaurant);
+        
+        [self.loadingIndicator stopAnimating];
+        
+        [self saveState];
+        [self presentInitialCards];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.loadingIndicator stopAnimating];
+        [self saveState];
+        //UIAlertView to let them know that something happened with the network connection...
+    }] start];
+}
+
+- (void)saveState {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"save state being called");
+    if (self.restaurants) {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for (Restaurant *r in self.restaurants) {
+            [array addObject:[Restaurant serialize:r]];
+        }
+        [defaults setObject:[array copy] forKey:@"unswiped"];
+    } else {
+        [defaults removeObjectForKey:@"unswiped"];
+    }
+    [defaults synchronize];
 }
 
 @end
