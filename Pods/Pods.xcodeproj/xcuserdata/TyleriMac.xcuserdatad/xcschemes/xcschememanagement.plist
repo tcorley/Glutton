@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Glutton-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Glutton-MDCSwipeToChoose.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>24DE259E0D8125CFEC29FE92</key>
+		<key>079ACDC1C3F880BEC44B5D04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F6F63774196CFDDE635C4D7</key>
+		<key>241F20C465EC15E7D1DEB286</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41513C2127FFBC9A603D25FF</key>
+		<key>29BC5336B58F0F5294293988</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D41C6A075A031B914370E4D</key>
+		<key>5B11077DFFC46010D9762CE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D77704AFCC9A85CBAAF8D04</key>
+		<key>5F4877A41D7BA1D33B13B510</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5D818ABAE9DA714F187752D</key>
+		<key>8065336FA5BEC114F593737F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95DD1AD43F692AEDF9E7640D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

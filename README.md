@@ -9,4 +9,5 @@ Glutton is my 378 - Mobile Computing iOS project. It's a Tinder-esque iPhone app
 * [AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking)
 * [MDCSwipeToChoose](https://github.com/modocache/MDCSwipeToChoose)
 * [iOS-OAuthConsumer](https://github.com/couchbaselabs/ios-oauthconsumer)
+* [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 

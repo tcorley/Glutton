@@ -69,15 +69,18 @@
     [self.navigationController.navigationBar.topItem setTitle:title];
     NSString *points = [NSString stringWithFormat:@"%lu", [defaults integerForKey:@"points"]];
     [self.pointsValueLabel setText:points];
-    NSString *url = [defaults objectForKey:@"userimage"] ?: @"http://i.imgur.com/10PtRXA.jpg";
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-    [operation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.userPhoto.image = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        self.userPhoto.image = [UIImage imageNamed:@"sample"];
-    }];
-    [operation start];
+    if([defaults objectForKey:@"name"]) {
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"userimage"]]]];
+        [operation setResponseSerializer:[AFImageResponseSerializer serializer]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            self.userPhoto.image = responseObject;
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            self.userPhoto.image = [UIImage imageNamed:@"blankprofile"];
+        }];
+        [operation start];
+    } else {
+        self.userPhoto.image = [UIImage imageNamed:@"blankprofile"];
+    }
     
 }
 

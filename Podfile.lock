@@ -22,18 +22,21 @@ PODS:
     - AFNetworking/NSURLSession
   - AFOAuth2Manager (2.2.0):
     - AFNetworking/NSURLConnection (~> 2.2)
+  - MBProgressHUD (0.9.1)
   - MDCSwipeToChoose (0.2.2)
   - OAuthConsumer (1.0.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFOAuth2Manager
+  - MBProgressHUD (~> 0.9.1)
   - MDCSwipeToChoose
   - OAuthConsumer
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MDCSwipeToChoose: 715aefacd3cc884c448fcdc70638c04a3056408c
   OAuthConsumer: 9e99725d1d58d076ed13e6010a2d74f82e25e4cc
 
