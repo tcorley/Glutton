@@ -18,6 +18,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Pods-Glutton-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>Pods-Glutton-MDCSwipeToChoose.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -59,6 +64,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>079ACDC1C3F880BEC44B5D04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0D8D7AC698DB7C1588DDE73E</key>
 		<dict>
 			<key>primary</key>
@@ -79,7 +89,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>241F20C465EC15E7D1DEB286</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>24DE259E0D8125CFEC29FE92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>29BC5336B58F0F5294293988</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -104,12 +124,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5B11077DFFC46010D9762CE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F4877A41D7BA1D33B13B510</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7D77704AFCC9A85CBAAF8D04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8065336FA5BEC114F593737F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>84B79D622634D07297B69BD7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95DD1AD43F692AEDF9E7640D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

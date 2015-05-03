@@ -23,17 +23,17 @@
                    snippet:(NSString *)snippet {
     self = [super init];
     if (self) {
-        _id = id;
-        _name = name;
-        _categories = categories;
-        _phone = phone;
-        _imageURL = imageURL;
+        _id = id; //nonnull
+        _name = name ?: @"Undefined";
+        _categories = categories ?: @[@"None"];
+        _phone = phone ?: @"";
+        _imageURL = imageURL ?: @"http://www.mcie.edu.au/wp-content/uploads/2013/07/iStock_000016978975SmallMedium.jpg";
         _location = location;
         _rating = rating;
         _ratingURL = ratingURL;
         _reviewCount = reviewCount;
-        _snippetImageURL = snippetImageURL;
-        _snippet = snippet;
+        _snippetImageURL = snippetImageURL ?: @"";
+        _snippet = snippet ?: @"";
     }
     return self;
 }
