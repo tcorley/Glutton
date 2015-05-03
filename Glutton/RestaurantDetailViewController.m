@@ -47,6 +47,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         self.rateButton.title = nil;
         //Don't show this on the swipe detail!
         self.verifyButton.hidden = YES;
+        [self.navigationItem setTitle:self.restaurant.name];
     }
     
     NSDictionary *coordinate = [self.restaurant.location objectForKey:@"coordinate"];

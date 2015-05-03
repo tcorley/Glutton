@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJe-Gt-oq2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJe-Gt-oq2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -405,12 +405,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o">
                         <barButtonItem key="backBarButtonItem" title=" " id="jOo-pn-0bL"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="dM1-08-aBJ">
-                            <connections>
-                                <action selector="cardDetail:" destination="kUE-BI-c9v" id="Za7-tB-mDL"/>
-                                <segue destination="ahh-Av-jex" kind="show" identifier="cardDetail" id="PdV-VR-0Bc"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,7 +508,7 @@
         <!--Restaurant Detail View Controller-->
         <scene sceneID="f8D-nj-YOC">
             <objects>
-                <viewController id="QQD-XV-uew" customClass="RestaurantDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="restaurantDetail" id="QQD-XV-uew" customClass="RestaurantDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SFZ-JK-mTD"/>
                         <viewControllerLayoutGuide type="bottom" id="UyS-tb-z72"/>
@@ -863,7 +857,4 @@
         <image name="swipe" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="PdV-VR-0Bc"/>
-    </inferredMetricsTieBreakers>
 </document>

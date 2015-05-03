@@ -19,7 +19,7 @@
 static const CGFloat ChooseRestaurantButtonHorizontalPadding = 80.f;
 static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
-@interface SwipeViewController ()
+@interface SwipeViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @property (strong, nonatomic) MBProgressHUD *loader;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
@@ -56,7 +56,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     [self->locationManager stopUpdatingLocation];
     
-    NSLog(@"Location gotten: Lat:%f Lon:%f", self.currentLocation.latitude, self.currentLocation.longitude);
+//    NSLog(@"Location gotten: Lat:%f Lon:%f", self.currentLocation.latitude, self.currentLocation.longitude);
     
     self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view  animated:YES];
     self.loader.labelText = @"Downloading food brb";
@@ -80,14 +80,9 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    NSLog(@"view is dissapearing");
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"%@", [locations lastObject]);
-}
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    NSLog(@"%@", [locations lastObject]);
+//}
 
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
@@ -136,6 +131,9 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     [defaults synchronize];
     
     self.frontCardView = self.backCardView;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentDetail:)];
+    tap.delegate = self;
+    [self.frontCardView addGestureRecognizer:tap];
     [self.frontCardView setUserInteractionEnabled:YES];
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.f;
@@ -230,26 +228,17 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     [self.frontCardView mdc_swipe:MDCSwipeDirectionRight];
 }
 
-- (IBAction)cardDetail:(id)sender {
-
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"cardDetail"]) {
-        GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
-        RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
-        [detail setRestaurant:self.currentRestaurant];
-        [detail setSegueIdentifierUsed:segue.identifier];
-    }
-
-}
-
 #pragma mark Network Calls and Objectification
 
 - (void)presentInitialCards {
     self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
     self.frontCardView.alpha = 0.0;
     [self.view addSubview:self.frontCardView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentDetail:)];
+    tap.delegate = self;
+    [self.frontCardView addGestureRecognizer:tap];
+    
     
     
     self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
@@ -270,6 +259,13 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
                          self.backCardView.alpha = 1.0;
                      }
                      completion:nil];
+}
+
+- (void)presentDetail:(UITapGestureRecognizer *)gestureRecognizer {
+    RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
+    [detail setRestaurant:self.currentRestaurant];
+    [detail setSegueIdentifierUsed:@"cardDetail"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)getBusinesses {
