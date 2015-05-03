@@ -66,7 +66,10 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 
 - (void)constructInformationView {
     CGFloat bottomHeight = 60.f;
-    CGRect bottomFrame = CGRectMake(0, CGRectGetHeight(self.bounds) - bottomHeight, CGRectGetWidth(self.bounds), bottomHeight);
+    CGRect bottomFrame = CGRectMake(0,
+                                    CGRectGetHeight(self.bounds) - bottomHeight,
+                                    CGRectGetWidth(self.bounds),
+                                    bottomHeight);
     _informationView = [[UIView alloc] initWithFrame:bottomFrame];
     _informationView.backgroundColor = [UIColor whiteColor];
     _informationView.clipsToBounds = YES;
@@ -82,7 +85,10 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 - (void)constructNameLabel {
     CGFloat leftPadding = 12.f;
     CGFloat topPadding = 2.f;
-    CGRect frame = CGRectMake(leftPadding, topPadding, floorf(CGRectGetWidth(_informationView.frame)/1.33), CGRectGetHeight(_informationView.frame) - topPadding);
+    CGRect frame = CGRectMake(leftPadding,
+                              topPadding,
+                              floorf(CGRectGetWidth(_informationView.frame)/1.33),
+                              CGRectGetHeight(_informationView.frame) - topPadding);
     _nameLabel = [[UILabel alloc] initWithFrame:frame];
     _nameLabel.font = [UIFont fontWithName:@"Lobster-Regular" size:29];
     [_nameLabel setAdjustsFontSizeToFitWidth:YES];

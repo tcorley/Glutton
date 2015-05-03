@@ -76,6 +76,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
     [self constructNopeButton];
     [self constructLikedButton];
+    [self.view bringSubviewToFront:self.frontCardView];
     
     
 }
@@ -135,6 +136,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     tap.delegate = self;
     [self.frontCardView addGestureRecognizer:tap];
     [self.frontCardView setUserInteractionEnabled:YES];
+    [self.view bringSubviewToFront:self.frontCardView];
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.f;
         [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
@@ -190,7 +192,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)constructNopeButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"nope"];
+    UIImage *image = [UIImage imageNamed:@"nope2"];
     button.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
                               CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding,
                               image.size.width,
@@ -210,7 +212,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)constructLikedButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"like"];
+    UIImage *image = [UIImage imageNamed:@"like2"];
     button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
     [button setImage:image forState:UIControlStateNormal];
     [button setTintColor:[UIColor colorWithRed:29.f/255.f green:245.f/255.f blue:106.f/255.f alpha:1.f]];
