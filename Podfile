@@ -8,6 +8,7 @@ pod "AFOAuth2Manager",  :inhibit_warnings => true
 pod "OAuthConsumer",    :inhibit_warnings => true
 pod "MDCSwipeToChoose", :inhibit_warnings => true
 pod "MBProgressHUD", "~> 0.9.1"
+pod "pop", "~> 1.0"
 
 end
 

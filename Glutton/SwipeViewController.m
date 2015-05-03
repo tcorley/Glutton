@@ -15,6 +15,7 @@
 #import "RestaurantDetailViewController.h"
 #import "GluttonNavigationController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <pop/POP.h>
 
 static const CGFloat ChooseRestaurantButtonHorizontalPadding = 80.f;
 static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
@@ -24,6 +25,8 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 @property (strong, nonatomic) MBProgressHUD *loader;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (nonatomic) double furthestDistanceOfLastRestaurant;
+@property (strong, nonatomic) UIButton *like;
+@property (strong, nonatomic) UIButton *nope;
 
 @end
 
@@ -191,42 +194,50 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 }
 
 - (void)constructNopeButton {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.nope = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"nope2"];
-    button.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
+    self.nope.frame = CGRectMake(ChooseRestaurantButtonHorizontalPadding,
                               CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding,
                               image.size.width,
                               image.size.height);
-    [button setImage:image forState:UIControlStateNormal];
-    [button setTintColor:[UIColor colorWithRed:247.f/255.f
+    [self.nope setImage:image forState:UIControlStateNormal];
+    [self.nope setTintColor:[UIColor colorWithRed:247.f/255.f
                                          green:91.f/255.f
                                           blue:37.f/255.f
                                          alpha:1.f]];
-    [button addTarget:self
+    [self.nope addTarget:self
                action:@selector(nopeFrontCardView)
      forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [self.view addSubview:self.nope];
 }
 
 
 
 - (void)constructLikedButton {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.like = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"like2"];
-    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
-    [button setImage:image forState:UIControlStateNormal];
-    [button setTintColor:[UIColor colorWithRed:29.f/255.f green:245.f/255.f blue:106.f/255.f alpha:1.f]];
-    [button addTarget:self action:@selector(likeFrontCardView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    self.like.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChooseRestaurantButtonHorizontalPadding, CGRectGetMaxY([self backCardViewFrame]) + ChooseRestaurantButtonVerticalPadding, image.size.width, image.size.height);
+    [self.like setImage:image forState:UIControlStateNormal];
+    [self.like setTintColor:[UIColor colorWithRed:29.f/255.f green:245.f/255.f blue:106.f/255.f alpha:1.f]];
+    [self.like addTarget:self action:@selector(likeFrontCardView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.like];
 }
 
 #pragma mark Control Events
 
 - (void)nopeFrontCardView {
+    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    spring.velocity = [NSValue valueWithCGPoint:CGPointMake(3, 3)];
+    spring.springBounciness = 30.f;
+    [self.nope pop_addAnimation:spring forKey:@"springNope"];
     [self.frontCardView mdc_swipe:MDCSwipeDirectionLeft];
 }
 
 - (void)likeFrontCardView {
+    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    spring.velocity = [NSValue valueWithCGPoint:CGPointMake(3, 3)];
+    spring.springBounciness = 30.f;
+    [self.like pop_addAnimation:spring forKey:@"springLike"];
     [self.frontCardView mdc_swipe:MDCSwipeDirectionRight];
 }
 

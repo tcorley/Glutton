@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Glutton-pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Glutton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>079ACDC1C3F880BEC44B5D04</key>
+		<key>12F3D7E8149354105D361333</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>241F20C465EC15E7D1DEB286</key>
+		<key>50067C619326784843D9D756</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29BC5336B58F0F5294293988</key>
+		<key>5B05F51E11F62579D3C5FDCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B11077DFFC46010D9762CE6</key>
+		<key>618B0808A06A10E371DD5FBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F4877A41D7BA1D33B13B510</key>
+		<key>70888550B5AC604B39A56987</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8065336FA5BEC114F593737F</key>
+		<key>C04F5CB97586A98DEB67A8C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95DD1AD43F692AEDF9E7640D</key>
+		<key>D8ACF57211213E4699E27B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED17756691D2AABD155E0A4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
