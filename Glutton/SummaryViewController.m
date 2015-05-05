@@ -8,8 +8,9 @@
 
 #import "SummaryViewController.h"
 #import <AFNetworking/AFNetworking.h>
+#import "BounceViewBehaviour.h"
 
-@interface SummaryViewController ()
+@interface SummaryViewController () <UIDynamicAnimatorDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 @property (weak, nonatomic) IBOutlet UIView *rankBubble;
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *pointsValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *friendsValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *friendsLabel;
+@property (strong, nonatomic) UIDynamicAnimator *animator;
+@property (strong, nonatomic) BounceViewBehaviour *bounceBehaviour;
 @end
 
 @implementation SummaryViewController
@@ -29,23 +32,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.userPhoto.layer setCornerRadius:CGRectGetHeight(self.userPhoto.frame)/2];
+    [self.userPhoto.layer setCornerRadius:CGRectGetHeight(self.userPhoto.frame)/2.0];
     [self.userPhoto.layer setMasksToBounds:YES];
     [self.userPhoto.layer setBorderWidth:0.1];
     self.levelLabel.text = @"Level: Meh?";
     [self.levelLabel setFont:[UIFont fontWithName:@"Lobster-Regular" size:24]];
     
     [self.rankBubble setBackgroundColor:[UIColor colorWithRed:0.404 green:0.227 blue:0.718 alpha:1]];
-    [self.rankBubble.layer setCornerRadius:CGRectGetHeight(self.rankBubble.frame)/2];
+    [self.rankBubble.layer setCornerRadius:CGRectGetHeight(self.rankBubble.frame)/2.0];
     [self.reviewBubble setBackgroundColor:[UIColor colorWithRed:0 green:0.737 blue:0.831 alpha:1]];
-    [self.reviewBubble.layer setCornerRadius:CGRectGetHeight(self.reviewBubble.frame)/2];
+    [self.reviewBubble.layer setCornerRadius:CGRectGetHeight(self.reviewBubble.frame)/2.0];
     [self.friendBubble setBackgroundColor:[UIColor colorWithRed:1 green:0.341 blue:0.133 alpha:1]];
-    [self.friendBubble.layer setCornerRadius:CGRectGetHeight(self.friendBubble.frame)/2];
+    [self.friendBubble.layer setCornerRadius:CGRectGetHeight(self.friendBubble.frame)/2.0];
     
     [self.rankLabel setText:@"Swiped"];
     [self.pointsLabel setText:@"Glutton\nPoints"];
     [self.friendsLabel setText:@"Rated"];
     
+    // Animate the items onto the view
+    [self.bounceBehaviour addItem:self.userPhoto];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.bounceBehaviour addItem:self.reviewBubble];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.bounceBehaviour addItem:self.rankBubble];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.bounceBehaviour addItem:self.friendBubble];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,14 +95,20 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UIDynamicAnimator *)animator {
+    if (!_animator) {
+        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+        _animator.delegate = self;
+    }
+    return _animator;
 }
-*/
+
+- (BounceViewBehaviour *)bounceBehaviour {
+    if (!_bounceBehaviour) {
+        _bounceBehaviour = [[BounceViewBehaviour alloc] init];
+        [self.animator addBehavior:_bounceBehaviour];
+    }
+    return _bounceBehaviour;
+}
 
 @end

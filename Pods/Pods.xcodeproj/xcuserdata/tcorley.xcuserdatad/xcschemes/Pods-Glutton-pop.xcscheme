@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8091604D39C5B2891A9FDEF"
-               BuildableName = "libPods-Glutton-SLPagingView.a"
-               BlueprintName = "Pods-Glutton-SLPagingView"
+               BlueprintIdentifier = "1BCE0EF818018E65A0764C36"
+               BuildableName = "libPods-Glutton-pop.a"
+               BlueprintName = "Pods-Glutton-pop"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

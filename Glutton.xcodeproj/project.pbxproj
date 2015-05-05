@@ -35,6 +35,7 @@
 		3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */; };
 		5D0CB1141AD09C0A005D600B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1131AD09C0A005D600B /* SummaryViewController.m */; };
 		5D0CB1171AD09CCE005D600B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CB1161AD09CCE005D600B /* CollectionViewController.m */; };
+		5D2F3BE11AF870800022CB74 /* BounceViewBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F3BE01AF870800022CB74 /* BounceViewBehaviour.m */; };
 		5D677BA81AEFD5D8004E182A /* StyledLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D677BA71AEFD5D8004E182A /* StyledLabel.m */; };
 		5D677BAB1AEFD9FE004E182A /* DetailEmbedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D677BAA1AEFD9FE004E182A /* DetailEmbedTableViewController.m */; };
 		5D9DC2881AE974E300117777 /* SummaryTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DC2871AE974E300117777 /* SummaryTitleLabel.m */; };
@@ -103,6 +104,8 @@
 		5D0CB1131AD09C0A005D600B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
 		5D0CB1151AD09CCE005D600B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		5D0CB1161AD09CCE005D600B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5D2F3BDF1AF870800022CB74 /* BounceViewBehaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BounceViewBehaviour.h; sourceTree = "<group>"; };
+		5D2F3BE01AF870800022CB74 /* BounceViewBehaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BounceViewBehaviour.m; sourceTree = "<group>"; };
 		5D677BA61AEFD5D8004E182A /* StyledLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledLabel.h; sourceTree = "<group>"; };
 		5D677BA71AEFD5D8004E182A /* StyledLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledLabel.m; sourceTree = "<group>"; };
 		5D677BA91AEFD9FE004E182A /* DetailEmbedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailEmbedTableViewController.h; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				3E1614BF1ADE17A200447673 /* ChooseRestaurantView.m */,
 				3E18B2591AE5B0660027BB60 /* RestaurantCell.h */,
 				3E18B25A1AE5B0660027BB60 /* RestaurantCell.m */,
+				5D2F3BDF1AF870800022CB74 /* BounceViewBehaviour.h */,
+				5D2F3BE01AF870800022CB74 /* BounceViewBehaviour.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				3E18B25B1AE5B0660027BB60 /* RestaurantCell.m in Sources */,
 				3E6F38871ACCD62D005739B1 /* AppDelegate.m in Sources */,
 				3E6F38AB1ACD10FC005739B1 /* YelpYapper.m in Sources */,
+				5D2F3BE11AF870800022CB74 /* BounceViewBehaviour.m in Sources */,
 				3E5447361ACDFB7B0079BF46 /* SwipeViewController.m in Sources */,
 				3E5447301ACDEB930079BF46 /* NSURLRequest+OAuth.m in Sources */,
 				3E406D1D1AE85AA0002DB3C7 /* MapPin.m in Sources */,

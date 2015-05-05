@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5081081CE9A8B2A7B1FC0009"
-               BuildableName = "libPods-Glutton-MDCSwipeToChoose.a"
-               BlueprintName = "Pods-Glutton-MDCSwipeToChoose"
+               BlueprintIdentifier = "A955432BD5982F9BE0F7FEED"
+               BuildableName = "libPods-Glutton-CSStickyHeaderFlowLayout.a"
+               BlueprintName = "Pods-Glutton-CSStickyHeaderFlowLayout"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

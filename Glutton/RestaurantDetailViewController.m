@@ -59,14 +59,17 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     [self.map addAnnotation:[[MapPin alloc] initWithCoordinates:self.coord
                                                       placeName:self.restaurant.name
                                                     description:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]]];
+    // For the restaurant image
     AFHTTPRequestOperation *imageRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.restaurant.imageURL]]];
     [imageRequestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
     [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.restaurantImage.image = responseObject;
+        [self.restaurantImage setUserInteractionEnabled:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //Do something here
     }];
     [imageRequestOperation start];
+    // For the rating image
     AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.restaurant.ratingURL]]];
     [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
     [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
