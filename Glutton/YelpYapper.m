@@ -67,7 +67,6 @@ static NSString * const kRatingPath        = @"http://s3-media4.fl.yelpassets.co
 }
 
 + (NSString *)CategoryString:(NSArray *)categoryArray {
-    NSLog(@"%@", categoryArray);
     
     if ([categoryArray count] == 0) {
         return @"No Categories :(";
