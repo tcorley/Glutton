@@ -36,8 +36,6 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.rateButton
-     setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"MartelSans-Regular" size:18]} forState:UIControlStateNormal];
     [self.navigationController.navigationBar.topItem setTitle:self.restaurant.name];
     
     //Don't show the rate button if the user hasn't swiped on it yet!
@@ -49,6 +47,10 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         self.verifyButton.hidden = YES;
         [self.navigationItem setTitle:self.restaurant.name];
     }
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor blackColor];
+    shadow.shadowOffset = CGSizeMake(1, 0);
+    [self.rateButton setTitleTextAttributes:@{NSShadowAttributeName: shadow, NSFontAttributeName: [UIFont fontWithName:@"MartelSans-Light" size:18]} forState:UIControlStateNormal];
     
     NSDictionary *coordinate = [self.restaurant.location objectForKey:@"coordinate"];
     self.coord = CLLocationCoordinate2DMake([[coordinate objectForKey:@"latitude"] floatValue], [[coordinate objectForKey:@"longitude"] floatValue]);

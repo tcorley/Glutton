@@ -22,6 +22,8 @@
     [super setText:text];
     [self setFont:[UIFont fontWithName:@"Lobster-Regular" size:35]];
     [self setTextColor:[UIColor whiteColor]];
+    [self setShadowColor:[UIColor blackColor]];
+    [self setShadowOffset:CGSizeMake(1, 0)];
 }
 
 @end

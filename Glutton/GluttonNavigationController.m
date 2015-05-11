@@ -11,9 +11,15 @@
 @implementation GluttonNavigationController
 
 - (void)viewDidLoad {
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor blackColor];
+    shadow.shadowOffset = CGSizeMake(1, 0);
     [self.navigationBar setBarTintColor:[UIColor colorWithRed: 0.749 green: 0.341 blue: 0 alpha: 1]];
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Lobster-Regular" size:27], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Lobster-Regular" size:27],
+                                                 NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                 NSShadowAttributeName: shadow}];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
+//    [self.navigationBar]
     
 }
 

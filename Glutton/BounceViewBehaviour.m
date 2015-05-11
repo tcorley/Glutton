@@ -19,8 +19,8 @@
 - (UIDynamicItemBehavior *) animationOptions {
     if (!_animationOptions) {
         _animationOptions = [[UIDynamicItemBehavior alloc] init];
-//        _animationOptions.allowsRotation = NO;
-        _animationOptions.elasticity = 0.8f;
+        _animationOptions.allowsRotation = NO;
+        _animationOptions.elasticity = 0.9f;
     }
     return _animationOptions;
 }

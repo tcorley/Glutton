@@ -40,10 +40,13 @@
     
     [self.rankBubble setBackgroundColor:[UIColor colorWithRed:0.404 green:0.227 blue:0.718 alpha:1]];
     [self.rankBubble.layer setCornerRadius:CGRectGetHeight(self.rankBubble.frame)/2.0];
+    [self.rankBubble.layer setMasksToBounds:YES];
     [self.reviewBubble setBackgroundColor:[UIColor colorWithRed:0 green:0.737 blue:0.831 alpha:1]];
     [self.reviewBubble.layer setCornerRadius:CGRectGetHeight(self.reviewBubble.frame)/2.0];
+    [self.reviewBubble.layer setMasksToBounds:YES];
     [self.friendBubble setBackgroundColor:[UIColor colorWithRed:1 green:0.341 blue:0.133 alpha:1]];
     [self.friendBubble.layer setCornerRadius:CGRectGetHeight(self.friendBubble.frame)/2.0];
+    [self.friendBubble.layer setMasksToBounds:YES];
     
     [self.rankLabel setText:@"Swiped"];
     [self.pointsLabel setText:@"Glutton\nPoints"];
