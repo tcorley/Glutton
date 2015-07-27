@@ -39,6 +39,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>I need your location so that I can find food around you!</string>
+	<key>NSAppTransportSecurity</key>
+	<dict><key>NSAllowsArbitraryLoads</key> <true/> </dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lobster-Regular.ttf</string>
