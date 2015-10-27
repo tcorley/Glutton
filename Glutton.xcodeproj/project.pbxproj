@@ -95,7 +95,6 @@
 		3E6F38971ACCD62D005739B1 /* GluttonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GluttonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6F389C1ACCD62D005739B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E6F389D1ACCD62D005739B1 /* GluttonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GluttonTests.m; sourceTree = "<group>"; };
-		3E6F38A71ACD0EB0005739B1 /* APICredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APICredentials.h; sourceTree = "<group>"; };
 		3E6F38A81ACD1072005739B1 /* ExampleAPICredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleAPICredentials.h; sourceTree = "<group>"; };
 		3E6F38A91ACD10FC005739B1 /* YelpYapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpYapper.h; sourceTree = "<group>"; };
 		3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpYapper.m; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		5D9DC28A1AE9774300117777 /* SummaryValueLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryValueLabel.m; sourceTree = "<group>"; };
 		5D9DC28C1AE97D7800117777 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5D9DC28D1AE97D7800117777 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		72AEDAE91B65A558002C3739 /* APICredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APICredentials.h; sourceTree = "<group>"; };
 		7B594CF81E7127B5838B2783 /* Pods-Glutton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glutton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glutton/Pods-Glutton.release.xcconfig"; sourceTree = "<group>"; };
 		A0EC0AC02F0046898F670AA3 /* libPods-Glutton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Glutton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,7 +168,7 @@
 			children = (
 				3E54472E1ACDEB930079BF46 /* NSURLRequest+OAuth.h */,
 				3E54472F1ACDEB930079BF46 /* NSURLRequest+OAuth.m */,
-				3E6F38A71ACD0EB0005739B1 /* APICredentials.h */,
+				72AEDAE91B65A558002C3739 /* APICredentials.h */,
 				3E6F38A81ACD1072005739B1 /* ExampleAPICredentials.h */,
 				3E6F38A91ACD10FC005739B1 /* YelpYapper.h */,
 				3E6F38AA1ACD10FC005739B1 /* YelpYapper.m */,
@@ -317,6 +317,7 @@
 				3E6F387B1ACCD62D005739B1 /* Frameworks */,
 				3E6F387C1ACCD62D005739B1 /* Resources */,
 				F2F64951F53C4FF28B4AB5A7 /* Copy Pods Resources */,
+				8B343C708AF62930B07D8878 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,11 +352,12 @@
 		3E6F38761ACCD62C005739B1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = TylerCo;
 				TargetAttributes = {
 					3E6F387D1ACCD62D005739B1 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = YRUMA36JE5;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -429,6 +431,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B343C708AF62930B07D8878 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Glutton/Pods-Glutton-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2F64951F53C4FF28B4AB5A7 /* Copy Pods Resources */ = {
@@ -535,6 +552,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -598,9 +616,13 @@
 			baseConfigurationReference = 414B40F44CFFE832A8010A1D /* Pods-Glutton.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Glutton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TylerCo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -609,9 +631,13 @@
 			baseConfigurationReference = 7B594CF81E7127B5838B2783 /* Pods-Glutton.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Glutton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TylerCo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -629,6 +655,7 @@
 				);
 				INFOPLIST_FILE = GluttonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TylerCo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glutton.app/Glutton";
 			};
@@ -644,6 +671,7 @@
 				);
 				INFOPLIST_FILE = GluttonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TylerCo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glutton.app/Glutton";
 			};

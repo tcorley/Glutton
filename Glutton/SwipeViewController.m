@@ -20,7 +20,7 @@
 static const CGFloat ChooseRestaurantButtonHorizontalPadding = 80.f;
 static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
-@interface SwipeViewController () <UIGestureRecognizerDelegate>
+@interface SwipeViewController () <UIGestureRecognizerDelegate, UIViewControllerPreviewingDelegate>
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @property (strong, nonatomic) MBProgressHUD *loader;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
@@ -39,7 +39,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     self.navigationController.navigationBarHidden = YES;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
+    [self check3DTouch];
 }
 
 - (void)viewDidLoad {
@@ -140,6 +140,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     [self.frontCardView addGestureRecognizer:tap];
     [self.frontCardView setUserInteractionEnabled:YES];
     [self.view bringSubviewToFront:self.frontCardView];
+    [self check3DTouch];
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.f;
         [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
@@ -383,6 +384,30 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
         [defaults removeObjectForKey:@"unswiped"];
     }
     [defaults synchronize];
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    if ([self.presentedViewController isKindOfClass:[RestaurantDetailViewController class]]) {
+        return nil;
+    }
+    RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
+    [detail setRestaurant:self.currentRestaurant];
+    
+    return detail;
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
+    [detail setRestaurant:self.currentRestaurant];
+    [detail setSegueIdentifierUsed:@"cardDetail"];
+    
+    [self showViewController:detail sender:self];
+}
+
+- (void)check3DTouch {
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:(id)self sourceView:self.frontCardView];
+    }
 }
 
 @end

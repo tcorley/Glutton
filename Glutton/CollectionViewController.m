@@ -14,7 +14,7 @@
 #import "RestaurantDetailViewController.h"
 #import "GluttonNavigationController.h"
 
-@interface CollectionViewController ()
+@interface CollectionViewController () <UIViewControllerPreviewingDelegate>
 @property (strong, nonatomic) NSMutableArray *restaurantsToRate;
 @property (strong, nonatomic) NSMutableArray *restaurantsRated;
 
@@ -36,6 +36,7 @@ static NSString * const reuseIdentifier = @"cell";
     
     // Do any additional setup after loading the view.
     self.restaurantsRated = [[NSMutableArray alloc] init];
+    [self registerForPreviewingWithDelegate:(id)self sourceView:self.collectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,36 +118,32 @@ static NSString * const reuseIdentifier = @"cell";
     }
 }
 
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    if ([self.presentedViewController isKindOfClass:[RestaurantDetailViewController class]]) {
+        return nil;
+    }
+    if (CGRectContainsPoint([self.view convertRect:self.collectionView.frame fromView:self.collectionView.superview], location)) {
+        CGPoint locationInTableview = [self.collectionView convertPoint:location fromView:self.view];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationInTableview];
+        if (indexPath) {
+            NSLog(@"Index path %ld", (long)indexPath.row);
+            UICollectionViewLayoutAttributes *cellAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+            [previewingContext setSourceRect:cellAttributes.frame];
+            RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
+            [detail setRestaurant:[Restaurant deserialize:[self.restaurantsToRate objectAtIndex:indexPath.row]]];
+            return detail;
+        }
+    }
+    
+    return nil;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    RestaurantDetailViewController *detail = (RestaurantDetailViewController *)viewControllerToCommit;
+    [detail setSegueIdentifierUsed:@"other"];
+    
+    [self showViewController:detail sender:self];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end
