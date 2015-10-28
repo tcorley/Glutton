@@ -88,10 +88,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 //    NSLog(@"%@", [locations lastObject]);
 //}
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 #pragma mark - MDCSwipeToChooseDelegate Protocol Methods
 
 - (void)viewDidCancelSwipe:(UIView *)view {
