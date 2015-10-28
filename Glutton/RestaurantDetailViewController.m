@@ -36,7 +36,6 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar.topItem setTitle:self.restaurant.name];
     
     //Don't show the rate button if the user hasn't swiped on it yet!
     if ([self.segueIdentifierUsed isEqualToString:@"cardDetail"]) {
