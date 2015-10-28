@@ -383,7 +383,7 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     }
     RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
     [detail setRestaurant:self.currentRestaurant];
-    
+    [detail setSegueIdentifierUsed:@"cardDetail"];
     return detail;
 }
 

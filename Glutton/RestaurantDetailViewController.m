@@ -36,7 +36,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.navigationItem setTitle:self.restaurant.name];
     //Don't show the rate button if the user hasn't swiped on it yet!
     if ([self.segueIdentifierUsed isEqualToString:@"cardDetail"]) {
         self.rateButton.style = UIBarButtonItemStylePlain;
@@ -44,7 +44,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         self.rateButton.title = nil;
         //Don't show this on the swipe detail!
         self.verifyButton.hidden = YES;
-        [self.navigationItem setTitle:self.restaurant.name];
+        
     }
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor blackColor];

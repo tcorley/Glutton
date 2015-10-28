@@ -437,6 +437,9 @@
                     <navigationItem key="navigationItem" title="Glutton Swipe" id="qlA-rg-z8o">
                         <barButtonItem key="backBarButtonItem" title=" " id="jOo-pn-0bL"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="QQD-XV-uew" kind="show" identifier="restaurantFromSwipe" id="PZu-a4-l6t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC8-d4-W1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -913,4 +916,7 @@
         <image name="swipe" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PZu-a4-l6t"/>
+    </inferredMetricsTieBreakers>
 </document>
