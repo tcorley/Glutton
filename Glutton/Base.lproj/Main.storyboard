@@ -505,7 +505,7 @@
                                     <outlet property="imageView" destination="JED-Ze-UcD" id="nQy-Mw-BqP"/>
                                     <outlet property="picLoading" destination="oRj-ur-i4o" id="NQb-zh-f7p"/>
                                     <outlet property="restaurantNameLabel" destination="3Mq-xN-7fy" id="Rhr-Gs-qVa"/>
-                                    <segue destination="ahh-Av-jex" kind="show" identifier="restaurantDetail" id="dMR-4q-wHa"/>
+                                    <segue destination="QQD-XV-uew" kind="show" identifier="restaurantDetail" id="WZ6-2l-quc"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -555,22 +555,22 @@
                                     <constraint firstAttribute="height" constant="138" id="OUM-U6-hbJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIX-05-cTk" customClass="StyledLabel">
-                                <rect key="frame" x="182" y="290" width="50" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIX-05-cTk" customClass="StyledLabel">
+                                <rect key="frame" x="183" y="290" width="49" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Review Count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0R-fO-C4b" customClass="StyledLabel">
-                                <rect key="frame" x="297" y="291" width="107" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review Count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0R-fO-C4b" customClass="StyledLabel">
+                                <rect key="frame" x="297" y="291" width="106" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xov-Yx-LRh" customClass="StyledLabel">
-                                <rect key="frame" x="333" y="326" width="34" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xov-Yx-LRh" customClass="StyledLabel">
+                                <rect key="frame" x="333" y="326" width="32" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -590,13 +590,13 @@
                                     <segue destination="a18-BS-ppF" kind="embed" identifier="embedseg" id="QHN-as-xJg"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Qx-4Ys">
-                                <rect key="frame" x="305" y="72" width="134" height="45"/>
+                            <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Qx-4Ys">
+                                <rect key="frame" x="262" y="72" width="141" height="45"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="1UD-b8-qv2"/>
-                                    <constraint firstAttribute="width" constant="134" id="Nmc-Mb-YzS"/>
+                                    <constraint firstAttribute="width" constant="141" id="Nmc-Mb-YzS"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Verify Review">
@@ -622,10 +622,10 @@
                             <constraint firstItem="j2s-a9-48O" firstAttribute="centerX" secondItem="tIX-05-cTk" secondAttribute="centerX" id="49v-zQ-819"/>
                             <constraint firstItem="eV0-hk-p7e" firstAttribute="top" secondItem="kl8-tv-Cpq" secondAttribute="bottom" constant="8" symbolic="YES" id="5YU-NW-KUk"/>
                             <constraint firstItem="C9u-uo-gwJ" firstAttribute="centerX" secondItem="tIX-05-cTk" secondAttribute="centerX" id="Bqv-sD-orb"/>
-                            <constraint firstItem="xov-Yx-LRh" firstAttribute="centerX" secondItem="R0R-fO-C4b" secondAttribute="centerX" id="DRc-qk-oD6"/>
+                            <constraint firstItem="xov-Yx-LRh" firstAttribute="centerX" secondItem="R0R-fO-C4b" secondAttribute="centerX" constant="-1" id="DRc-qk-oD6"/>
                             <constraint firstItem="C9u-uo-gwJ" firstAttribute="leading" secondItem="kl8-tv-Cpq" secondAttribute="trailing" constant="9" id="F9T-A9-enl"/>
                             <constraint firstItem="xov-Yx-LRh" firstAttribute="bottom" secondItem="C9u-uo-gwJ" secondAttribute="bottom" id="RcL-cP-0jQ"/>
-                            <constraint firstItem="fLV-Qx-4Ys" firstAttribute="trailing" secondItem="R0R-fO-C4b" secondAttribute="trailing" constant="35" id="Uy5-g9-Fqm"/>
+                            <constraint firstItem="fLV-Qx-4Ys" firstAttribute="trailing" secondItem="R0R-fO-C4b" secondAttribute="trailing" id="Uy5-g9-Fqm"/>
                             <constraint firstItem="eV0-hk-p7e" firstAttribute="bottom" secondItem="UyS-tb-z72" secondAttribute="top" id="WSD-xs-WXb"/>
                             <constraint firstItem="eV0-hk-p7e" firstAttribute="trailing" secondItem="j2s-a9-48O" secondAttribute="trailing" id="YcL-dj-KQH"/>
                             <constraint firstItem="fLV-Qx-4Ys" firstAttribute="top" secondItem="SFZ-JK-mTD" secondAttribute="bottom" constant="8" symbolic="YES" id="cjd-SE-dkB"/>
@@ -667,7 +667,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2287" y="-674"/>
+            <point key="canvasLocation" x="1678" y="-158"/>
         </scene>
         <!--Detail Embed Table View Controller-->
         <scene sceneID="bnS-88-fZE">
@@ -866,26 +866,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvi-xq-red" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="385" y="-1728"/>
-        </scene>
-        <!--detailNav-->
-        <scene sceneID="lr8-pA-geT">
-            <objects>
-                <navigationController title="detailNav" automaticallyAdjustsScrollViewInsets="NO" id="ahh-Av-jex" customClass="GluttonNavigationController" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="anS-GF-HX7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="QQD-XV-uew" kind="relationship" relationship="rootViewController" id="oa9-Fx-t3e"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oTe-TQ-tol" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1653" y="-674"/>
         </scene>
         <!--Glutton Navigation Controller-->
         <scene sceneID="SKh-uU-Bkm">

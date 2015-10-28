@@ -110,8 +110,7 @@ static NSString * const reuseIdentifier = @"cell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"restaurantDetail"]) {
-        GluttonNavigationController *navController = (GluttonNavigationController *)[segue destinationViewController];
-        RestaurantDetailViewController *detail = (RestaurantDetailViewController *)[navController topViewController];
+        RestaurantDetailViewController *detail = (RestaurantDetailViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
         [detail setRestaurant:[Restaurant deserialize:[self.restaurantsToRate objectAtIndex:indexPath.row]]];
         [detail setSegueIdentifierUsed:segue.identifier];
