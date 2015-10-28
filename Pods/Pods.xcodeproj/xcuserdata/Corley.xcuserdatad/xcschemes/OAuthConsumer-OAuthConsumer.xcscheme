@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6E2D1916BB2A68DD9EC25D3E'
+               BlueprintIdentifier = '21A65E6F3262C51708A5B9CF'
                BlueprintName = 'OAuthConsumer-OAuthConsumer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'OAuthConsumer.bundle'>

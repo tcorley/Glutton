@@ -39,6 +39,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     self.mdc_options = options ? options : [MDCSwipeOptions new];
     self.mdc_viewState = [MDCViewState new];
     self.mdc_viewState.originalCenter = self.center;
+    self.mdc_viewState.originalTransform = self.layer.transform;
 
     [self mdc_setupPanGestureRecognizer];
 }
@@ -133,7 +134,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                           delay:0.0
                         options:self.mdc_options.swipeCancelledAnimationOptions
                      animations:^{
-                         self.transform = self.mdc_viewState.originalTransform;
+                         self.layer.transform = self.mdc_viewState.originalTransform;
                          self.center = self.mdc_viewState.originalCenter;
                      } completion:^(BOOL finished) {
                          id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
@@ -149,6 +150,10 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     if ([delegate respondsToSelector:@selector(view:shouldBeChosenWithDirection:)]) {
         BOOL should = [delegate view:self shouldBeChosenWithDirection:direction];
         if (!should) {
+            [self mdc_returnToOriginalCenter];
+            if (self.mdc_options.onCancel != nil){
+                self.mdc_options.onCancel(self);
+            }
             return;
         }
     }
@@ -167,7 +172,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_executeOnPanBlockForTranslation:(CGPoint)translation {
     if (self.mdc_options.onPan) {
-        CGFloat thresholdRatio = MIN(1.f, fabsf(translation.x)/self.mdc_options.threshold);
+        CGFloat thresholdRatio = MIN(1.f, fabs(translation.x)/self.mdc_options.threshold);
 
         MDCSwipeDirection direction = MDCSwipeDirectionNone;
         if (translation.x > 0.f) {
@@ -189,8 +194,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (void)mdc_rotateForTranslation:(CGPoint)translation
                rotationDirection:(MDCRotationDirection)rotationDirection {
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-    self.transform = CGAffineTransformRotate(self.mdc_viewState.originalTransform,
-                                             rotationDirection * rotation);
+    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
 }
 
 #pragma mark Threshold
@@ -229,7 +233,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.mdc_viewState.originalCenter = view.center;
-        self.mdc_viewState.originalTransform = view.transform;
+        self.mdc_viewState.originalTransform = view.layer.transform;
 
         // If the pan gesture originated at the top half of the view, rotate the view
         // away from the center. Otherwise, rotate towards the center.
