@@ -81,8 +81,8 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     [requestOperation start];
 
     self.reviewCount.text = [self.restaurant.reviewCount stringValue];
-    [self.reviewCountLabel setText:@"Rating"];
-    [self.ratingLabel setText:@"Review Count"];
+    [self.reviewCountLabel setText:@"Review Count"];
+    [self.ratingLabel setText:@"Rating "];
     [self.verifyButton.titleLabel setFont:[UIFont fontWithName:@"Bariol-Light" size:22]];
     
 }
