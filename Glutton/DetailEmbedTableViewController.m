@@ -36,7 +36,7 @@
     [self.categoryLabel setAdjustsFontSizeToFitWidth:YES];
     [self.phoneNumberLabel setTitle:[YelpYapper styledPhoneNumber:self.restaurant.phone] forState:UIControlStateNormal];
     [self.addressLabel setText:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]];
-    [self.phoneNumberLabel.titleLabel setFont:[UIFont fontWithName:@"MartelSans-Regular" size:14]];
+    [self.phoneNumberLabel.titleLabel setFont:[UIFont fontWithName:@"Bariol-Regular" size:15]];
     [self.snippetLabel setText:self.restaurant.snippet];
 }
 

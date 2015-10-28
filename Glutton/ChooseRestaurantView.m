@@ -30,7 +30,6 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
         
         [self setBackgroundColor:[UIColor grayColor]];
         _restaurant = restaurant;
-//        self.imageView.image = [UIImage imageNamed:@"sample"];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight |
                                 UIViewAutoresizingFlexibleWidth  |
                                 UIViewAutoresizingFlexibleBottomMargin;
@@ -42,7 +41,6 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
         [self.picLoading setHidesWhenStopped:YES];
         [self addSubview:self.picLoading];
         [self.picLoading startAnimating];
-        //NSLog(@"%@", self.restaurant.imageURL);
         [self setImageInBackground];
         
         [self constructInformationView];
@@ -90,11 +88,12 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
                               floorf(CGRectGetWidth(_informationView.frame)/1.33),
                               CGRectGetHeight(_informationView.frame) - topPadding);
     _nameLabel = [[UILabel alloc] initWithFrame:frame];
-    _nameLabel.font = [UIFont fontWithName:@"Lobster-Regular" size:29];
+//    _nameLabel.font = [UIFont fontWithName:@"Lobster-Regular" size:29];
+    _nameLabel.font = [UIFont fontWithName:@"Bariol-Bold" size:29];
     [_nameLabel setAdjustsFontSizeToFitWidth:YES];
     _nameLabel.text = _restaurant.name;
-    _nameLabel.shadowColor = [UIColor grayColor];
-    _nameLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+//    _nameLabel.shadowColor = [UIColor grayColor];
+//    _nameLabel.shadowOffset = CGSizeMake(0.0, 1.0);
     [_informationView addSubview:_nameLabel];
 }
 

@@ -125,7 +125,6 @@ static NSString * const reuseIdentifier = @"cell";
         CGPoint locationInTableview = [self.collectionView convertPoint:location fromView:self.view];
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationInTableview];
         if (indexPath) {
-            NSLog(@"Index path %ld", (long)indexPath.row);
             UICollectionViewLayoutAttributes *cellAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
             [previewingContext setSourceRect:cellAttributes.frame];
             RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];

@@ -36,7 +36,7 @@
     [self.userPhoto.layer setMasksToBounds:YES];
     [self.userPhoto.layer setBorderWidth:0.1];
     self.levelLabel.text = @"Level: Meh?";
-    [self.levelLabel setFont:[UIFont fontWithName:@"Lobster-Regular" size:24]];
+    [self.levelLabel setFont:[UIFont fontWithName:@"Bariol-Bold" size:24]];
     
     [self.rankBubble setBackgroundColor:[UIColor colorWithRed:0.404 green:0.227 blue:0.718 alpha:1]];
     [self.rankBubble.layer setCornerRadius:CGRectGetHeight(self.rankBubble.frame)/2.0];

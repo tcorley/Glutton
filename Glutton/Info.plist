@@ -47,8 +47,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lobster-Regular.ttf</string>
-		<string>MartelSans-Light.ttf</string>
-		<string>MartelSans-Regular.ttf</string>
+		<string>bariol_light-webfont.ttf</string>
+		<string>bariol_bold-webfont.ttf</string>
+		<string>bariol_regular-webfont.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

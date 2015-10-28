@@ -59,10 +59,9 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     [self->locationManager stopUpdatingLocation];
     
-//    NSLog(@"Location gotten: Lat:%f Lon:%f", self.currentLocation.latitude, self.currentLocation.longitude);
-    
     self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view  animated:YES];
     self.loader.labelText = @"Downloading food brb";
+    self.loader.labelFont = [UIFont fontWithName:@"Bariol-Bold" size:[UIFont systemFontSize]];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *potentialUnswiped = [defaults objectForKey:@"unswiped"];
@@ -83,10 +82,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
     
     
 }
-
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-//    NSLog(@"%@", [locations lastObject]);
-//}
 
 #pragma mark - MDCSwipeToChooseDelegate Protocol Methods
 

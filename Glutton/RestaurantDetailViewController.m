@@ -49,7 +49,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor blackColor];
     shadow.shadowOffset = CGSizeMake(1, 0);
-    [self.rateButton setTitleTextAttributes:@{NSShadowAttributeName: shadow, NSFontAttributeName: [UIFont fontWithName:@"MartelSans-Light" size:18]} forState:UIControlStateNormal];
+    [self.rateButton setTitleTextAttributes:@{NSShadowAttributeName: shadow, NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:20]} forState:UIControlStateNormal];
     
     NSDictionary *coordinate = [self.restaurant.location objectForKey:@"coordinate"];
     self.coord = CLLocationCoordinate2DMake([[coordinate objectForKey:@"latitude"] floatValue], [[coordinate objectForKey:@"longitude"] floatValue]);
@@ -61,7 +61,6 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                                                       placeName:self.restaurant.name
                                                     description:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]]];
     // For the restaurant image
-    NSLog(@"%@", self.restaurant.imageURL);
     AFHTTPRequestOperation *imageRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
     [imageRequestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
     [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -84,7 +83,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     self.reviewCount.text = [self.restaurant.reviewCount stringValue];
     [self.reviewCountLabel setText:@"Rating"];
     [self.ratingLabel setText:@"Review Count"];
-    [self.verifyButton.titleLabel setFont:[UIFont fontWithName:@"MartelSans-Light" size:20]];
+    [self.verifyButton.titleLabel setFont:[UIFont fontWithName:@"Bariol-Light" size:22]];
     
 }
 
@@ -193,7 +192,6 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager POST:imbiberyPath parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
         if ([responseObject objectForKey:@"review"]) {
             NSUInteger pointsForReview = [[responseObject objectForKey:@"review"] length] / 2;
             [self notifyWithResult:@"Success ✅" andMessage:[NSString stringWithFormat:@"Successful Review! You'll get %lu points for this review:\n%@", pointsForReview, [responseObject objectForKey:@"review"]] withButtonTitle:@"Okay!"];

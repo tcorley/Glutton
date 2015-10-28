@@ -15,7 +15,7 @@
     shadow.shadowColor = [UIColor blackColor];
     shadow.shadowOffset = CGSizeMake(1, 0);
     [self.navigationBar setBarTintColor:[UIColor colorWithRed: 0.749 green: 0.341 blue: 0 alpha: 1]];
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Lobster-Regular" size:27],
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Bariol-Bold" size:32],
                                                  NSForegroundColorAttributeName: [UIColor whiteColor],
                                                  NSShadowAttributeName: shadow}];
     [self.navigationBar setTintColor:[UIColor whiteColor]];

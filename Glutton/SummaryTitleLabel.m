@@ -20,7 +20,7 @@
 
 -(void)setText:(NSString *)text {
     [super setText:text];
-    [self setFont:[UIFont fontWithName:@"MartelSans-Light" size:23]];
+    [self setFont:[UIFont fontWithName:@"Bariol-Regular" size:23]];
     [self setTextColor:[UIColor whiteColor]];
     [self setShadowColor:[UIColor blackColor]];
     [self setShadowOffset:CGSizeMake(1, 0)];

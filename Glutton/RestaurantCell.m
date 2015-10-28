@@ -12,7 +12,7 @@
 
 - (void)setRestaurantNameLabel:(UILabel *)restaurantNameLabel {
     _restaurantNameLabel = restaurantNameLabel;
-    [_restaurantNameLabel setFont:[UIFont fontWithName:@"MartelSans-Regular" size:14]];
+    [_restaurantNameLabel setFont:[UIFont fontWithName:@"Bariol-Regular" size:14]];
     [_restaurantNameLabel setTextColor:[UIColor whiteColor]];
     [_restaurantNameLabel setBackgroundColor:[UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:0.5]];
 }

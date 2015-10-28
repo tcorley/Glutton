@@ -36,7 +36,7 @@
     CGFloat height = 18.f;
     CGRect frame = CGRectMake(0, CGRectGetMaxY(self.imageView.frame), CGRectGetWidth(self.bounds), height);
     self.label = [[UILabel alloc ]initWithFrame:frame];
-    self.label.font = [UIFont fontWithName:@"MartelSans-Light" size:15];
+    self.label.font = [UIFont fontWithName:@"Bariol-Light" size:15];
     self.label.text = text;
     self.label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.label];

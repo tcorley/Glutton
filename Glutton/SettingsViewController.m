@@ -65,7 +65,6 @@
                              AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
                              manager.responseSerializer = [AFJSONResponseSerializer serializer];
                              [manager GET:[NSString stringWithFormat:@"http://tcorley.info:5000/user/%@", userid.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                 NSLog(@"%@", responseObject);
                                  [self notifyWithResult:@"Success" andMessage:[NSString stringWithFormat:@"Thanks, %@", [responseObject objectForKey:@"name" ]]];
                                  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                  [defaults setObject:[responseObject objectForKey:@"name"] forKey:@"name"];
