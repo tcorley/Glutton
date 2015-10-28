@@ -3,7 +3,7 @@ platform :ios, "9.1"
 
 target "Glutton" do
 
-pod "AFNetworking", "~> 2.0"
+pod "AFNetworking", "~> 2.6.1", :inhibit_warnings => true
 pod "AFOAuth2Manager",  :inhibit_warnings => true
 pod "OAuthConsumer",    :inhibit_warnings => true
 pod "MDCSwipeToChoose", :inhibit_warnings => true
