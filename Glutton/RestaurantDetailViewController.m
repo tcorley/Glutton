@@ -15,6 +15,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "DetailEmbedTableViewController.h"
 #import "StyledLabel.h"
+#import <URBMediaFocusViewController/URBMediaFocusViewController.h>
 
 @interface RestaurantDetailViewController () <MBProgressHUDDelegate, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *map;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) MBProgressHUD *loader;
 @property (weak, nonatomic) IBOutlet StyledLabel *reviewCountLabel;
 @property (weak, nonatomic) IBOutlet StyledLabel *ratingLabel;
+@property (strong, nonatomic) URBMediaFocusViewController *imageView;
 
 @end
 
@@ -65,7 +67,10 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     [imageRequestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
     [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.restaurantImage.image = responseObject;
-        [self.restaurantImage setUserInteractionEnabled:NO];
+//        [self.restaurantImage setUserInteractionEnabled:NO];
+        [self.restaurantImage setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [self.restaurantImage addGestureRecognizer:imageTap];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //Do something here
     }];
@@ -85,6 +90,11 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     [self.ratingLabel setText:@"Rating "];
     [self.verifyButton.titleLabel setFont:[UIFont fontWithName:@"Bariol-Light" size:22]];
     
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+    self.imageView = [[URBMediaFocusViewController alloc] init];
+    [self.imageView showImage:self.restaurantImage.image fromRect:self.restaurantImage.frame];
 }
 
 
