@@ -27,6 +27,7 @@ PODS:
   - MDCSwipeToChoose (HEAD based on 0.2.3)
   - OAuthConsumer (1.0.3)
   - pop (1.0.7)
+  - URBMediaFocusViewController (0.5.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.1)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - MDCSwipeToChoose (HEAD)
   - OAuthConsumer
   - pop (~> 1.0)
+  - URBMediaFocusViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
@@ -45,5 +47,6 @@ SPEC CHECKSUMS:
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
   OAuthConsumer: 9e99725d1d58d076ed13e6010a2d74f82e25e4cc
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  URBMediaFocusViewController: 21618bda6290f74b2767059e983f3a7f4f3e8cd1
 
 COCOAPODS: 0.39.0

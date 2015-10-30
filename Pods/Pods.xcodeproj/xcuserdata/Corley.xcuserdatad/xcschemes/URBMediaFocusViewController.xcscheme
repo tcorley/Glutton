@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7EC796B0FD0278DC125D15AE'
-               BlueprintName = 'OAuthConsumer'
+               BlueprintIdentifier = '3BB01FCF2E820A831DDB2B2F'
+               BlueprintName = 'URBMediaFocusViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libOAuthConsumer.a'>
+               BuildableName = 'libURBMediaFocusViewController.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

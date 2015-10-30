@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>URBMediaFocusViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6621F1BEE7F88333A37213612E2CDE7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>78BDBA4187F4C802D3620D46F98B30FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F374B7C00D8FC4F27FCEB61B309F8AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC9622AC4FB5ACBB603BD4DF8D25B355</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D582C15D4645B9CE9581D48AB3CDAB8C</key>
+		<key>BCE39FA9A4FCCF7368D0796F4FFABCBA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
