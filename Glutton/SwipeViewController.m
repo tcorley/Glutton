@@ -36,9 +36,6 @@ static const CGFloat ChooseRestaurantButtonVerticalPadding = 20.f;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self check3DTouch];
 }
 
