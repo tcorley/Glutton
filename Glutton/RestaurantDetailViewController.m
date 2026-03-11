@@ -10,7 +10,8 @@
 #import "YelpYapper.h"
 #import <MapKit/MapKit.h>
 #import "MapPin.h"
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "DetailEmbedTableViewController.h"
@@ -63,27 +64,16 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                                                       placeName:self.restaurant.name
                                                     description:[[self.restaurant.location objectForKey:@"address"] objectAtIndex:0]]];
     // For the restaurant image
-    AFHTTPRequestOperation *imageRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
-    [imageRequestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.restaurantImage.image = responseObject;
-//        [self.restaurantImage setUserInteractionEnabled:NO];
+    NSString *imageURLString = [self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"];
+    [self.restaurantImage setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURLString]]
+                               placeholderImage:nil
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        self.restaurantImage.image = image;
         [self.restaurantImage setUserInteractionEnabled:YES];
         UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [self.restaurantImage addGestureRecognizer:imageTap];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //Do something here
-    }];
-    [imageRequestOperation start];
-    // For the rating image
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.restaurant.ratingURL]]];
-    [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.ratingImage.image = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    [requestOperation start];
+    }
+                                        failure:nil];
 
     self.reviewCount.text = [self.restaurant.reviewCount stringValue];
     [self.reviewCountLabel setText:@"Review Count"];
@@ -118,7 +108,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                              actionWithTitle:@"Open Yelp"
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"yelp4:///biz/%@", self.restaurant.id]]];
+                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"yelp4:///biz/%@", self.restaurant.id]] options:@{} completionHandler:nil];
                              }];
         UIAlertAction *no = [UIAlertAction
                              actionWithTitle:@"Maybe some other time"
@@ -156,8 +146,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                          actionWithTitle:@"Apple Maps"
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction *action) {
-                             MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.coord
-                                                                            addressDictionary:nil];
+                             MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.coord];
                              MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
                              [item setName:self.restaurant.name];
                              [item openInMapsWithLaunchOptions:nil];
@@ -167,7 +156,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
                                  NSString *urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?q=%@&center=%f,%f&x-success=glutton://?resume=true&x-source=Glutton", [self.restaurant.name stringByReplacingOccurrencesOfString:@" " withString:@"+"],self.coord.latitude, self.coord.longitude];
-                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
                              }];
     UIAlertAction *nope = [UIAlertAction
                            actionWithTitle:@"Don't Do Anything"
@@ -191,7 +180,7 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
     }
     //display an alertview with a loading indicator
     self.loader = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    self.loader.labelText = @"Verifying Review...";
+    self.loader.label.text = @"Verifying Review...";
 
     //make the network call to imbibery
     
@@ -199,9 +188,10 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
                              @"user_id": user,
                              @"restaurant": self.restaurant.id
                              };
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager POST:imbiberyPath parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:imbiberyPath parameters:params headers:nil progress:nil
+          success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject objectForKey:@"review"]) {
             NSUInteger pointsForReview = [[responseObject objectForKey:@"review"] length] / 2;
             [self notifyWithResult:@"Success ✅" andMessage:[NSString stringWithFormat:@"Successful Review! You'll get %lu points for this review:\n%@", pointsForReview, [responseObject objectForKey:@"review"]] withButtonTitle:@"Okay!"];
@@ -210,10 +200,11 @@ static NSString * const imbiberyPath = @"http://tcorley.info:5000/reviewcheck";
         } else {
             [self notifyWithResult:@"Oops! 😲" andMessage:@"Couldn't find your post... could you check and make sure it was submitted correctly on Yelp and try again?" withButtonTitle:@"Yea, I guess so."];
         }
-        [self.loader hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.loader hideAnimated:YES];
+    }
+          failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self notifyWithResult:@"Error...😭" andMessage:[NSString stringWithFormat:@"Whoops! Something went wrong:\n\n%@", error] withButtonTitle:@"Well that doesn't look good"];
-        [self.loader hide:YES];
+        [self.loader hideAnimated:YES];
     }];
     //make alert with success
     //add the points to the nsuserdefaults

@@ -10,11 +10,11 @@
 #import "AppDelegate.h"
 #import "Restaurant.h"
 #import "RestaurantCell.h"
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "RestaurantDetailViewController.h"
 #import "GluttonNavigationController.h"
 
-@interface CollectionViewController () <UIViewControllerPreviewingDelegate>
+@interface CollectionViewController ()
 @property (strong, nonatomic) NSMutableArray *restaurantsToRate;
 @property (strong, nonatomic) NSMutableArray *restaurantsRated;
 
@@ -36,12 +36,6 @@ static NSString * const reuseIdentifier = @"cell";
     
     // Do any additional setup after loading the view.
     self.restaurantsRated = [[NSMutableArray alloc] init];
-    [self registerForPreviewingWithDelegate:(id)self sourceView:self.collectionView];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,16 +82,18 @@ static NSString * const reuseIdentifier = @"cell";
     [cell.picLoading setHidesWhenStopped:YES];
     [cell.picLoading startAnimating];
     [cell setBackgroundColor:[UIColor grayColor]];
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[restaurant objectForKey:@"imageURL"] stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
-    [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *urlString = [[restaurant objectForKey:@"imageURL"] stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"];
+    NSURL *imageURL = [NSURL URLWithString:urlString];
+    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:imageURL]
+                          placeholderImage:[UIImage imageNamed:@"sample"]
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         [cell.picLoading stopAnimating];
-        cell.imageView.image = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        cell.imageView.image = image;
+    }
+                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         [cell.picLoading stopAnimating];
         cell.imageView.image = [UIImage imageNamed:@"sample"];
     }];
-    [requestOperation start];
     cell.restaurantNameLabel.text = [restaurant objectForKey:@"name"];
     [cell.contentView sendSubviewToBack:cell.imageView];
     
@@ -115,32 +111,6 @@ static NSString * const reuseIdentifier = @"cell";
         [detail setRestaurant:[Restaurant deserialize:[self.restaurantsToRate objectAtIndex:indexPath.row]]];
         [detail setSegueIdentifierUsed:segue.identifier];
     }
-}
-
-- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    if ([self.presentedViewController isKindOfClass:[RestaurantDetailViewController class]]) {
-        return nil;
-    }
-    if (CGRectContainsPoint([self.view convertRect:self.collectionView.frame fromView:self.collectionView.superview], location)) {
-        CGPoint locationInTableview = [self.collectionView convertPoint:location fromView:self.view];
-        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationInTableview];
-        if (indexPath) {
-            UICollectionViewLayoutAttributes *cellAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
-            [previewingContext setSourceRect:cellAttributes.frame];
-            RestaurantDetailViewController *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantDetail"];
-            [detail setRestaurant:[Restaurant deserialize:[self.restaurantsToRate objectAtIndex:indexPath.row]]];
-            return detail;
-        }
-    }
-    
-    return nil;
-}
-
-- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    RestaurantDetailViewController *detail = (RestaurantDetailViewController *)viewControllerToCommit;
-    [detail setSegueIdentifierUsed:@"other"];
-    
-    [self showViewController:detail sender:self];
 }
 
 

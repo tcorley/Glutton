@@ -1,9 +1,8 @@
 //
 //  NSURLRequest+OAuth.h
-//  YelpAPISample
+//  Glutton
 //
-//  Created by Thibaud Robelain on 7/2/14.
-//  Copyright (c) 2014 Yelp Inc. All rights reserved.
+//  Yelp Fusion API v3 request builder (replaces the old OAuth 1.0a implementation).
 //
 
 #import <Foundation/Foundation.h>
@@ -13,7 +12,7 @@
 /**
  @param host The domain host
  @param path The path on the domain host
- @return Builds a NSURLRequest with all the OAuth headers field set with the host and path given to it.
+ @return Builds a NSURLRequest with the Yelp Fusion v3 Bearer token Authorization header.
  */
 + (NSURLRequest *)requestWithHost:(NSString *)host path:(NSString *)path;
 
@@ -21,7 +20,7 @@
  @param host The domain host
  @param path The path on the domain host
  @param params The query parameters
- @return Builds a NSURLRequest with all the OAuth headers field set with the host, path, and query parameters given to it.
+ @return Builds a NSURLRequest with the Yelp Fusion v3 Bearer token Authorization header.
  */
 + (NSURLRequest *)requestWithHost:(NSString *)host path:(NSString *)path params:(NSDictionary *)params;
 

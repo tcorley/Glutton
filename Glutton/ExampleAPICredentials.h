@@ -8,9 +8,7 @@
 
 
 #pragma mark Yelp Credentials
+// Yelp Fusion API v3: get your API key at https://www.yelp.com/developers/v3/manage_app
 
-#define YelpConsumerKey @"REDACTED"
-#define YelpConsumerSecret @"REDACTED"
-#define YelpToken @"REDACTED"
-#define YelpTokenSecret @"REDACTED"
+#define YelpAPIKey @"YOUR_YELP_API_KEY_HERE"
 

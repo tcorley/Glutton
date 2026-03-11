@@ -40,13 +40,9 @@
     [self.snippetLabel setText:self.restaurant.snippet];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)callBiz:(id)sender {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", self.restaurant.phone]];
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 #pragma mark - Table view data source

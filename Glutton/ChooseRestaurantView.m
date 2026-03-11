@@ -9,7 +9,7 @@
 #import "ChooseRestaurantView.h"
 #import "ImageLabelView.h"
 #import "Restaurant.h"
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 
@@ -36,7 +36,7 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
         self.imageView.autoresizingMask = self.autoresizingMask;
         [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
         [self.imageView setClipsToBounds:YES];
-        self.picLoading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.picLoading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
         [self.picLoading setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
         [self.picLoading setHidesWhenStopped:YES];
         [self addSubview:self.picLoading];
@@ -50,16 +50,19 @@ static const CGFloat ChooseRestaurantViewImageLabelWidth = 42.f;
 }
 
 - (void)setImageInBackground {
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"]]]];
-    [requestOperation setResponseSerializer:[AFImageResponseSerializer serializer]];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.picLoading stopAnimating];
-        self.imageView.image = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.picLoading stopAnimating];
-        self.imageView.image = [UIImage imageNamed:@"sample"];
+    NSString *urlString = [self.restaurant.imageURL stringByReplacingOccurrencesOfString:@"ms.jpg" withString:@"o.jpg"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    UIImage *placeholder = [UIImage imageNamed:@"sample"];
+    __weak typeof(self) weakSelf = self;
+    [self.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url]
+                          placeholderImage:placeholder
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        weakSelf.imageView.image = image;
+        [weakSelf.picLoading stopAnimating];
+    }
+                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        [weakSelf.picLoading stopAnimating];
     }];
-    [requestOperation start];
 }
 
 - (void)constructInformationView {
